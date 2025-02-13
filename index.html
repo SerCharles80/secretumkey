@@ -1,16 +1,70 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css">
-    <title>Phaser - Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretum - Key of Acquaviva</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="app">
-        <div id="game-container"></div>
+    <div class="main-container">
+        <header class="h-header col-100">
+            <div class="h-header__container grid">
+                <div class="h-header__profilo col-25">
+                    <div class="h-header__immaginep">
+                        <p>CC</p> <!-- immagine profilo -->
+                    </div>
+                </div>
+                <div class="h-header__punteggio col-50">
+                    <div class="h-header__punti">
+                        <img src="asset/icona-punteggio.svg" alt="">
+                        <p>2.500 Punti</p>
+                    </div>
+                </div>
+                <div class="h-header__notifica col-25">
+                    <img src="asset/icona-notifica.svg" alt="">
+                </div>
+            </div>
+        </header>
+
+
+
+
+
+
+        <div id="contenitore-gioco-phaser" class="g-gioco">
+            
+
+
+        </div>
+        
+
+
+
+        <footer class="f-footer col-100">
+            <div class="f-footer__container grid">
+                <div class="f-footer__uno col-40">
+                    <div class="f-footer__button">
+                        <button class="b-button">Ricomincia</button>
+                    </div>
+                </div>
+                <div class="f-footer__due col-20">
+                    <div class="f-footer__cartina">
+                        <img src="asset/mappa-secretum.png" alt="">
+                    </div>
+                </div>
+                <div class="f-footer__tre col-20">
+                    <div class="f-footer__classifica">
+                        <img src="asset/icona-classifica.svg" alt="">
+                    </div>
+                </div>
+                <div class="f-footer__quattro col-20">
+                    <div class="f-footer__profilo">
+                        <img src="asset/icona-profilo.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <script type="module" src="src/main.js"></script>
 </body>
