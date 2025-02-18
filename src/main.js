@@ -1,28 +1,20 @@
-import { Boot } from './scenes/Boot';
-import { Game } from './scenes/Game';
-import { GameOver } from './scenes/GameOver';
-import { MainMenu } from './scenes/MainMenu';
-import { Preloader } from './scenes/Preloader';
+import Phaser from 'phaser';
+import { WelcomeScreen } from './scenes/WelcomeScreen';
+import { LivelloUno } from './scenes/Wherisacquaviva';
 
-//  Find out more information about the Game Config at:
-//  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
+const gameContainer = document.getElementById('contenitore-gioco-phaser');
 
+// Configurazione del gioco Phaser
 const config = {
     type: Phaser.AUTO,
-    width: 350,
-    height: 350,
+    width: gameContainer.clientWidth,
+    height: gameContainer.clientHeight,
     parent: 'contenitore-gioco-phaser',
-    scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH
-    },
     scene: [
-        Boot,
-        Preloader,
-        MainMenu,
-        Game,
-        GameOver
+        WelcomeScreen,
+        LivelloUno
     ]
 };
 
+// Crea una nuova istanza del gioco Phaser
 export default new Phaser.Game(config);

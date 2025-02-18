@@ -117,16 +117,19 @@ body{
 
 
 
-
+.contenitore-schermo-gioco{border: 2px solid brown; display: flex; justify-content: center;}
 
 .g-gioco{
+    width: 500px;
+    height: 600px;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center;  
     position: relative;
     padding: 0 35px;
-      @media (max-width: 768px){padding: 0 20px; max-width: 550px;}
+    border: 2px solid red;
+      @media (max-width: 768px){width: 350px; height: 500px;}
     }
 
 .g-gioco__container{margin-top: 55px;}
