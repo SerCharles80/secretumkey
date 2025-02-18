@@ -7,7 +7,6 @@ export class WelcomeScreen extends Phaser.Scene {
     }
 
     preload() {
-        // Carica le risorse qui
         // Carica l'immagine di spiegazione del gioco
         this.load.image('spiegazione', 'assets/wherisacquaviva/spiegazione-gioco-1.png');
     }
@@ -30,13 +29,13 @@ export class WelcomeScreen extends Phaser.Scene {
             'Avvia Secretum',
             () => {
                 console.log("Pulsante Avvia Secretum premuto, avvio il gioco...");
-                this.scene.start('LivelloUno');
+                this.scene.start('WherisAcquaviva');
             }
         );
 
         // Gestisci il clic sul pulsante di avvio
-        startButton.on('pointerdown', () => {
-            this.scene.start('LivelloUno');
+        this.startButton.on('pointerdown', () => {
+            this.scene.start('WherisAcquaviva');
         });
     }
 }

@@ -1,9 +1,10 @@
 import { createPrimaryButton } from '../utilita/bottonepri.js';
+import { GameState } from '../stato/GameState.js';
 import Phaser from 'phaser';
 
-export class LivelloUno extends Phaser.Scene {
+export class WherisAcquaviva extends Phaser.Scene {
     constructor() {
-        super({ key: 'LivelloUno' });
+        super({ key: 'WherisAcquaviva' });
         // Inizializza le variabili di stato
         this.score = 0;
         this.startTime = 0;
@@ -544,7 +545,25 @@ export class LivelloUno extends Phaser.Scene {
         // Formatta il tempo in minuti e secondi
         return value.toString().padStart(2, '0');
     }
+ 
+    calculateFinalScore() {
+        // Calcola il punteggio del livello
+        const elapsed = this.time.now - this.startTime;
+        const minutes = Math.floor(elapsed / 60000);
+        const seconds = Math.floor((elapsed % 60000) / 1000);
+    
+        const timePenalty = (minutes * 60) + seconds; // Penalità in base al tempo
+        const finalScore = this.score - timePenalty; // Calcola il punteggio finale del livello
+    
+        // Aggiorna il testo del punteggio in Phaser
+        this.scoreText.setText(`Score: ${finalScore}`);
+    
+        // ✅ Aggiorna il punteggio globale in GameState
+        GameState.addScore(finalScore);  
+    }
 
+
+    /*
     calculateFinalScore() {
         // Calcola il punteggio finale
         const elapsed = this.time.now - this.startTime;
@@ -556,6 +575,7 @@ export class LivelloUno extends Phaser.Scene {
 
         this.scoreText.setText(`Score: ${finalScore}`);
     }
+    */
 }
 
 

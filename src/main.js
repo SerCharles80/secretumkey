@@ -1,28 +1,6 @@
-/*import Phaser from 'phaser';
-import { WelcomeScreen } from './scenes/WelcomeScreen';
-import { LivelloUno } from './scenes/Wherisacquaviva';
-
-const gameContainer = document.getElementById('contenitore-gioco-phaser');
-
-// Configurazione del gioco Phaser
-const config = {
-    type: Phaser.AUTO,
-    width: gameContainer.clientWidth,
-    height: gameContainer.clientHeight,
-    parent: 'contenitore-gioco-phaser',
-    scene: [
-        WelcomeScreen,
-        LivelloUno
-    ]
-};
-
-// Crea una nuova istanza del gioco Phaser
-export default new Phaser.Game(config);
-*/
-
 import Phaser from 'phaser';
 import { WelcomeScreen } from './scenes/WelcomeScreen';
-import { LivelloUno } from './scenes/Wherisacquaviva';
+import { WherisAcquaviva } from './scenes/WherisAcquaviva';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -37,7 +15,7 @@ window.onload = function () {
     const config = {
         type: Phaser.AUTO,
         parent: 'contenitore-gioco-phaser',
-        scene: [WelcomeScreen, LivelloUno],
+        scene: [WelcomeScreen, WherisAcquaviva],
         scale: {
             mode: Phaser.Scale.RESIZE, // Adatta il gioco al div
             autoCenter: Phaser.Scale.CENTER_BOTH // Centra il gioco
