@@ -8,8 +8,8 @@ export class WherisAcquaviva extends Phaser.Scene {
         // Inizializza le variabili di stato
         this.score = 0;
         this.startTime = 0;
-        this.timerText = null;
-        this.scoreText = null;
+        //this.timerText = null;
+        //this.scoreText = null;
         this.isPaused = false;
         this.elapsed = 0;
         this.isStopped = false;
@@ -244,6 +244,9 @@ export class WherisAcquaviva extends Phaser.Scene {
         this.load.image('esulto', 'assets/wherisacquaviva/esultanza-post-livello.png');
     }
 
+
+
+
     create() {
         // Imposta lo sfondo e il timer
         this.cameras.main.setBackgroundColor('#FFFBF5');
@@ -261,7 +264,7 @@ export class WherisAcquaviva extends Phaser.Scene {
 
 
         // Aggiungi il testo del timer
-        this.timerText = this.add.text(10, 10, 'Time: 00:00', {
+        /*this.timerText = this.add.text(10, 10, 'Time: 00:00', {
             fontFamily: 'Poppins',
             fontSize: '24px',
             color: '#000000'
@@ -272,7 +275,7 @@ export class WherisAcquaviva extends Phaser.Scene {
             fontFamily: 'Poppins',
             fontSize: '24px',
             color: '#000000'
-        });
+        });*/
     }
 
     //Funzione per startare il gioco con il pulsante
@@ -309,7 +312,7 @@ export class WherisAcquaviva extends Phaser.Scene {
 
     update() {
         // Aggiorna il timer se il gioco non è in pausa o fermo
-        if (this.isPaused || this.isStopped) {
+        /*if (this.isPaused || this.isStopped) {
             return;
         }
 
@@ -317,12 +320,12 @@ export class WherisAcquaviva extends Phaser.Scene {
         const minutes = Math.floor(elapsed / 60000);
         const seconds = Math.floor((elapsed % 60000) / 1000);
 
-        this.timerText.setText(`Time: ${this.formatTime(minutes)}:${this.formatTime(seconds)}`);
+        this.timerText.setText(`Time: ${this.formatTime(minutes)}:${this.formatTime(seconds)}`);*/
     }
 
     showQuestion() {
+
        // Rimuovi la domanda precedente se esiste
-        
                 if (this.questionText) {
                     this.questionText.destroy();
                 }
@@ -331,7 +334,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                 const question = this.questions[this.currentQuestionIndex];
                 this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
                     fontFamily: 'Poppins',
-                    fontSize: '24px',
+                    fontSize: '28px',
                     color: '#000000',
                     align: 'center',
                     wordWrap: { width: maxWidth, useAdvancedWrap: true }
@@ -363,7 +366,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                     } else {
                         answerElement = this.add.text(x, y, answer.value.replace(/\\n/g, '\n'), {
                             fontFamily: 'Poppins',
-                            fontSize: '18px',
+                            fontSize: '16px',
                             color: '#000000',
                             align: 'center', // Assicura l'allineamento centrale
                             wordWrap: { width: 120, useAdvancedWrap: true }
@@ -484,25 +487,6 @@ export class WherisAcquaviva extends Phaser.Scene {
             this.showCompletionMessage();
         }
     }
-    
-    
-    /*
-    showCompletionMessage() {
-        // Mostra il messaggio di completamento
-        const completionText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Complimenti ora sai dov’è Acquaviva!', {
-            fontFamily: 'Poppins',
-            fontSize: '32px',
-            color: '#000000'
-        }).setOrigin(0.5);
-
-        // Mostra il punteggio totalizzato
-        const finalScoreText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, `Il punteggio del gioco è di: ${this.score}`, {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#000000'
-        }).setOrigin(0.5);
-    }
-    */
     showCompletionMessage() {
         console.log('Mostrando schermata di completamento...');
 
@@ -545,37 +529,35 @@ export class WherisAcquaviva extends Phaser.Scene {
         // Formatta il tempo in minuti e secondi
         return value.toString().padStart(2, '0');
     }
+    
+    // Aggiorna il div HTML esterno con il punteggio globale
+    updateGlobalScoreDisplay() {
+        const scoreDiv = document.getElementById('PunteggioTotaleDiv');
+        if (scoreDiv) {
+            scoreDiv.innerText = `Punteggio: ${GameState.getScore()}`;
+        } else {
+            console.error("Div 'PunteggioTotaleDiv' non trovato!");
+        }
+    }
  
     calculateFinalScore() {
         // Calcola il punteggio del livello
         const elapsed = this.time.now - this.startTime;
         const minutes = Math.floor(elapsed / 60000);
         const seconds = Math.floor((elapsed % 60000) / 1000);
-    
         const timePenalty = (minutes * 60) + seconds; // Penalità in base al tempo
-        const finalScore = this.score - timePenalty; // Calcola il punteggio finale del livello
+        const finalScore = this.score - timePenalty;  // Punteggio finale del livello
     
-        // Aggiorna il testo del punteggio in Phaser
-        this.scoreText.setText(`Score: ${finalScore}`);
+        // Aggiorna il testo del punteggio nella scena
+        //this.scoreText.setText(`Score: ${finalScore}`);
     
-        // ✅ Aggiorna il punteggio globale in GameState
-        GameState.addScore(finalScore);  
+        // Aggiorna il punteggio globale nel GameState
+        GameState.addScore(finalScore);
+    
+        // Aggiorna il div esterno con il punteggio globale
+        this.updateGlobalScoreDisplay();
     }
 
-
-    /*
-    calculateFinalScore() {
-        // Calcola il punteggio finale
-        const elapsed = this.time.now - this.startTime;
-        const minutes = Math.floor(elapsed / 60000);
-        const seconds = Math.floor((elapsed % 60000) / 1000);
-
-        const timeScore = (minutes * 60) + seconds;
-        const finalScore = this.score - timeScore;
-
-        this.scoreText.setText(`Score: ${finalScore}`);
-    }
-    */
 }
 
 

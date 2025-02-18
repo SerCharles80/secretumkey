@@ -16,6 +16,9 @@ window.onload = function () {
         type: Phaser.AUTO,
         parent: 'contenitore-gioco-phaser',
         scene: [WelcomeScreen, WherisAcquaviva],
+        audio: {
+            noAudio: true  // Disabilita l'AudioContext
+        },
         scale: {
             mode: Phaser.Scale.RESIZE, // Adatta il gioco al div
             autoCenter: Phaser.Scale.CENTER_BOTH // Centra il gioco
