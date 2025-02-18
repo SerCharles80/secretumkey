@@ -1,3 +1,4 @@
+import { createPrimaryButton } from '../utilita/bottonepri.js';
 import Phaser from 'phaser';
 
 export class LivelloUno extends Phaser.Scene {
@@ -239,11 +240,24 @@ export class LivelloUno extends Phaser.Scene {
         this.load.image('balloon_popped', 'assets/wherisacquaviva/scoppio.png');
         this.load.image('risposta_esatta', 'assets/wherisacquaviva/pesca-esulta.png');
         this.load.image('risposta_sbagliata', 'assets/wherisacquaviva/pesca-sbaglia.png');
+        this.load.image('esulto', 'assets/wherisacquaviva/esultanza-post-livello.png');
     }
 
     create() {
         // Imposta lo sfondo e il timer
         this.cameras.main.setBackgroundColor('#FFFBF5');
+
+        // Crea il nuovo pulsante riutilizzabile
+        this.startButton = createPrimaryButton(
+            this,
+            this.cameras.main.centerX,
+            this.cameras.main.centerY,
+            'Start',
+            () => {
+                console.log("Pulsante Start premuto! Avvio gioco...");
+                this.startGame(); // Quando premuto, avvia il gioco
+        });
+
 
         // Aggiungi il testo del timer
         this.timerText = this.add.text(10, 10, 'Time: 00:00', {
@@ -258,21 +272,38 @@ export class LivelloUno extends Phaser.Scene {
             fontSize: '24px',
             color: '#000000'
         });
+    }
 
-        // Aggiungi il pulsante di avvio
-        const startButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 200, 'Start', {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#00ff00'
-        }).setOrigin(0.5).setInteractive();
-
-        // Gestisci il clic sul pulsante di avvio
-        startButton.on('pointerdown', () => {
-            startButton.destroy();
-            this.isPaused = false;
-            this.startTime = this.time.now; // Inizia il timer
-            this.showQuestion();
-        });
+    //Funzione per startare il gioco con il pulsante
+    startGame() {
+        console.log("Start premuto, avvio del gioco...");
+    
+        // Controlliamo se il pulsante esiste prima di distruggerlo
+        if (this.startButton) {
+            this.tweens.add({
+                targets: this.startButton,
+                alpha: 0, // Riduce la trasparenza fino a scomparire
+                duration: 300, // Durata 0,5 secondi
+                onComplete: () => {
+                    console.log("Fade out completato, distruzione pulsante...");
+                    this.startButton.destroy(true);
+                    this.startButton = null;
+                    console.log("Pulsante Start distrutto!");
+                }
+            });
+    
+        } else {
+            console.error("Errore: Il pulsante Start non esiste!");
+        }
+    
+        // Avvia il gioco
+        this.isPaused = false;
+        this.startTime = this.time.now;
+        console.log(`Timer avviato: ${this.startTime}`);
+    
+        // Mostra la prima domanda
+        console.log("Chiamata a showQuestion()...");
+        this.showQuestion();
     }
 
     update() {
@@ -294,12 +325,15 @@ export class LivelloUno extends Phaser.Scene {
                 if (this.questionText) {
                     this.questionText.destroy();
                 }
-            
+                
+                const maxWidth = this.cameras.main.width * 0.8;
                 const question = this.questions[this.currentQuestionIndex];
                 this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
                     fontFamily: 'Poppins',
                     fontSize: '24px',
-                    color: '#000000'
+                    color: '#000000',
+                    align: 'center',
+                    wordWrap: { width: maxWidth, useAdvancedWrap: true }
                 }).setOrigin(0.5);
             
                 this.answerElements = []; // Reset dell'array prima di creare nuove risposte
@@ -326,11 +360,14 @@ export class LivelloUno extends Phaser.Scene {
                     if (answer.type === "image") {
                         answerElement = this.add.image(x, y, answer.value).setOrigin(0.5).setScale(0.5);
                     } else {
-                        answerElement = this.add.text(x, y, answer.value, {
+                        answerElement = this.add.text(x, y, answer.value.replace(/\\n/g, '\n'), {
                             fontFamily: 'Poppins',
                             fontSize: '18px',
-                            color: '#000000'
-                        }).setOrigin(0.5);
+                            color: '#000000',
+                            align: 'center', // Assicura l'allineamento centrale
+                            wordWrap: { width: 120, useAdvancedWrap: true }
+                        }).setOrigin(0.5)
+                        .setLineSpacing(5);
                     }
             
                     // Aggiungiamo entrambi gli elementi all'array
@@ -446,7 +483,9 @@ export class LivelloUno extends Phaser.Scene {
             this.showCompletionMessage();
         }
     }
-
+    
+    
+    /*
     showCompletionMessage() {
         // Mostra il messaggio di completamento
         const completionText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Complimenti ora sai dov’è Acquaviva!', {
@@ -462,6 +501,44 @@ export class LivelloUno extends Phaser.Scene {
             color: '#000000'
         }).setOrigin(0.5);
     }
+    */
+    showCompletionMessage() {
+        console.log('Mostrando schermata di completamento...');
+
+        // ✅ Aggiunge l'immagine di congratulazioni nella parte superiore dello schermo
+        const congratsImage = this.add.image(
+            this.cameras.main.centerX,
+            this.cameras.main.height * 0.25, // Posiziona l'immagine nella parte superiore
+            'esulto' // Usa l'immagine di congratulazioni
+        ).setOrigin(0.5, 0).setScale(1);
+
+         // ✅ Mostra il punteggio totalizzato al centro dello schermo
+        const finalScoreText = this.add.text(
+        this.cameras.main.centerX,
+        this.cameras.main.centerY,
+        `Hai totalizzato: ${this.score} Punti`, // Visualizza direttamente il punteggio
+        {
+            fontFamily: 'Poppins',
+            fontSize: '28px',
+            color: '#343434', // ✅ Imposta il colore corretto
+            fontWeight: 'bold'
+        }
+    ).setOrigin(0.5);
+    
+       // ✅ Aggiunge il pulsante "Continua" nella parte inferiore dello schermo
+        const continueButton = createPrimaryButton(
+        this,
+        this.cameras.main.centerX,
+        this.cameras.main.height * 0.8, // Posiziona il pulsante in basso
+        'Continua',
+        () => {
+            console.log('Pulsante Continua premuto!');
+        }
+    );
+
+    console.log('Schermata di completamento mostrata correttamente.');
+    }
+    
 
     formatTime(value) {
         // Formatta il tempo in minuti e secondi
@@ -480,3 +557,5 @@ export class LivelloUno extends Phaser.Scene {
         this.scoreText.setText(`Score: ${finalScore}`);
     }
 }
+
+

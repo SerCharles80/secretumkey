@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { createPrimaryButton } from '../utilita/bottonepri.js';
 
 export class WelcomeScreen extends Phaser.Scene {
     constructor() {
@@ -7,42 +8,31 @@ export class WelcomeScreen extends Phaser.Scene {
 
     preload() {
         // Carica le risorse qui
+        // Carica l'immagine di spiegazione del gioco
+        this.load.image('spiegazione', 'assets/wherisacquaviva/spiegazione-gioco-1.png');
     }
 
     create() {
         // Imposta lo sfondo
         this.cameras.main.setBackgroundColor('#FFFBF5');
 
-        // Aggiungi il testo di benvenuto
-        const welcomeText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 100, 'Si parte da qui, scopriamo dove si trova Acquaviva!', {
-            fontFamily: 'Poppins',
-            fontSize: '32px',
-            color: '#343434'
-        }).setOrigin(0.5);
+        // Aggiungi l'immagine di spiegazione del gioco
+        const spiegazioneImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 100, 'spiegazione').setOrigin(0.5);
 
-        // Aggiungi il testo di continuazione
-        const continueText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Leggi la domanda e seleziona la risposta esatta per guadagnare punti', {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#343434',
-            wordWrap: { width: this.cameras.main.width - 40 }
-        }).setOrigin(0.5);
+        // Ridimensiona l'immagine per adattarla al contenitore
+        spiegazioneImage.setScale(Math.min(this.cameras.main.width / spiegazioneImage.width, this.cameras.main.height / spiegazioneImage.height) * 0.8);
 
-        // Aggiungi il pulsante di avvio
-        const startButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 100, 'Avvia Secretum', {
-            fontFamily: 'Poppins',
-            fontSize: '32px',
-            color: '#fff',
-            backgroundColor: '#00AAFF',
-            padding: {
-                left: 20,
-                right: 20,
-                top: 10,
-                bottom: 10
-            },
-            borderRadius: 15,
-            border: '2px solid #343434',
-        }).setOrigin(0.5).setInteractive();
+        // Crea il nuovo pulsante riutilizzabile
+        this.startButton = createPrimaryButton(
+            this,
+            this.cameras.main.centerX,
+            this.cameras.main.centerY + 200,
+            'Avvia Secretum',
+            () => {
+                console.log("Pulsante Avvia Secretum premuto, avvio il gioco...");
+                this.scene.start('LivelloUno');
+            }
+        );
 
         // Gestisci il clic sul pulsante di avvio
         startButton.on('pointerdown', () => {
