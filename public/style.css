@@ -111,7 +111,8 @@ body{
 .h-header__immaginep p{margin: 0; padding: 0; color: var(--bianco); font-weight: 600; font-size: 1.3rem;}
 .h-header__punteggio{display: flex; align-items: center;}
 .h-header__punti{display: flex; align-items: center; gap: 5px; background-color: var(--bianco); border: 2px solid var(--testo); padding: 2px 15px; border-radius: 20px;}
-.h-header__punti p{font-size: 0.8rem; font-weight: 600; margin: 0; padding: 0;}
+.h-header__punti p,
+#PunteggioTotaleDiv{font-size: 0.8rem; font-weight: 600; margin: 0; padding: 0;}
 
 
 
@@ -122,15 +123,17 @@ body{
     display: flex; 
     justify-content: center;
     align-items: center; 
-    padding-bottom: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     width: 100%; 
     height: 100%;
     top: 0;
-   
+    @media (max-width: 768px){padding-bottom: 100px; padding-top: 70px}
+       
 }
 
 #contenitore-gioco-phaser{
-    width: 100%;
+    width: 70%;
     height: 75%px;
     display: flex; 
     flex-direction: column; 
@@ -138,7 +141,7 @@ body{
     justify-content: center;  
     position: relative;
     padding: 0 35px;
-      @media (max-width: 768px){width: 350px; height: 500px;}
+      @media (max-width: 768px){width: 100%; height: 100%;}
     }
 
 .g-gioco__container{margin-top: 55px;}

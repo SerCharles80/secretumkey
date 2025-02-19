@@ -330,7 +330,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                     this.questionText.destroy();
                 }
                 
-                const maxWidth = this.cameras.main.width * 0.8;
+                const maxWidth = this.cameras.main.width * 0.85;
                 const question = this.questions[this.currentQuestionIndex];
                 this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
                     fontFamily: 'Poppins',
@@ -345,15 +345,39 @@ export class WherisAcquaviva extends Phaser.Scene {
                 question.answers.forEach((answer, index) => {
                     let x, y;
                     let overlap;
+                    // Definisci l'area disponibile per il posizionamento (75% dell'altezza)
+                    const regionWidth = this.cameras.main.width;
+                    const regionHeight = this.cameras.main.height * 0.75; // 75% dell'altezza disponibile
+                    // Imposta dei margini (modifica questi valori secondo necessità)
+                    const marginX = 50;
+                    const marginY = 50;
+                    //gestione del numero massimo di tentativi de loop
+                    let attempts = 0;
+                    const maxAttempts = 100; // Aumenta il limite se necessario
                     do {
                         overlap = false;
-                        x = Phaser.Math.Between(50, this.cameras.main.width - 50);
-                        y = Phaser.Math.Between(100, this.cameras.main.height / 2 - 50);
+                        //x = Phaser.Math.Between(50, this.cameras.main.width - 50);
+                        //y = Phaser.Math.Between(100, this.cameras.main.height / 2 - 50);
+
+                        // Genera una coordinata x all'interno dell'area con margine
+                        x = Phaser.Math.Between(marginX, regionWidth - marginX);
+                        // Genera una coordinata y all'interno dell'area 75% con margine
+                        y = Phaser.Math.Between(marginY, regionHeight - marginY);
+
                         for (let balloon of this.balloons) {
                             if (Phaser.Math.Distance.Between(x, y, balloon.x, balloon.y) < 100) {
                                 overlap = true;
                                 break;
                             }
+                        }
+                        attempts++;
+                        // Se superiamo il numero massimo di tentativi, usciamo dal loop
+                        if (attempts > maxAttempts) {
+                            // Se non troviamo una posizione valida dopo molti tentativi, forziamo una posizione di default
+                            x = regionWidth / 2;
+                            y = regionHeight / 2;
+                            //console.warn('Impossibile posizionare un nuovo balloon senza sovrapposizione dopo molti tentativi.');
+                            break;
                         }
                     } while (overlap);
             
@@ -534,7 +558,7 @@ export class WherisAcquaviva extends Phaser.Scene {
     updateGlobalScoreDisplay() {
         const scoreDiv = document.getElementById('PunteggioTotaleDiv');
         if (scoreDiv) {
-            scoreDiv.innerText = `Punteggio: ${GameState.getScore()}`;
+            scoreDiv.innerText = `Punti: ${GameState.getScore()}`;
         } else {
             console.error("Div 'PunteggioTotaleDiv' non trovato!");
         }
