@@ -134,7 +134,7 @@ body{
 
 #contenitore-gioco-phaser{
     width: 70%;
-    height: 75%px;
+    height: 75%;
     display: flex; 
     flex-direction: column; 
     align-items: center; 

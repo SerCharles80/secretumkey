@@ -1,6 +1,11 @@
 import Phaser from 'phaser';
-import { WelcomeScreen } from './scenes/WelcomeScreen';
+import { WelcomeScreen } from './scenes/intro/WelcomeScreen';
 import { WherisAcquaviva } from './scenes/WherisAcquaviva';
+import { FineWerisAcquaviva } from './scenes/end/FineWerisAcquaviva';
+import { SweetPeachInstructions } from './scenes/intro/SweetPeachInstructions';
+import { SweetPeach } from './scenes/SweetPeach';
+import { FineSweetPeach } from './scenes/end/FineSweetPeach';
+//import { FineSweetPeach } from './scenes/end/FineSweetPeach';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -15,7 +20,15 @@ window.onload = function () {
     const config = {
         type: Phaser.AUTO,
         parent: 'contenitore-gioco-phaser',
-        scene: [WelcomeScreen, WherisAcquaviva],
+        backgroundColor: '#FFFBF5', // Imposta il colore di sfondo globale qui
+        scene: [
+            //WelcomeScreen, 
+            //WherisAcquaviva,
+            //FineWerisAcquaviva,
+            //SweetPeachInstructions,
+            SweetPeach,
+            FineSweetPeach
+        ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext
         },

@@ -512,40 +512,8 @@ export class WherisAcquaviva extends Phaser.Scene {
         }
     }
     showCompletionMessage() {
-        console.log('Mostrando schermata di completamento...');
-
-        // ✅ Aggiunge l'immagine di congratulazioni nella parte superiore dello schermo
-        const congratsImage = this.add.image(
-            this.cameras.main.centerX,
-            this.cameras.main.height * 0.25, // Posiziona l'immagine nella parte superiore
-            'esulto' // Usa l'immagine di congratulazioni
-        ).setOrigin(0.5, 0).setScale(1);
-
-         // ✅ Mostra il punteggio totalizzato al centro dello schermo
-        const finalScoreText = this.add.text(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY,
-        `Hai totalizzato: ${this.score} Punti`, // Visualizza direttamente il punteggio
-        {
-            fontFamily: 'Poppins',
-            fontSize: '28px',
-            color: '#343434', // ✅ Imposta il colore corretto
-            fontWeight: 'bold'
-        }
-    ).setOrigin(0.5);
-    
-       // ✅ Aggiunge il pulsante "Continua" nella parte inferiore dello schermo
-        const continueButton = createPrimaryButton(
-        this,
-        this.cameras.main.centerX,
-        this.cameras.main.height * 0.8, // Posiziona il pulsante in basso
-        'Continua',
-        () => {
-            console.log('Pulsante Continua premuto!');
-        }
-    );
-
-    console.log('Schermata di completamento mostrata correttamente.');
+        // Mostra la scena FineWerisAcquaviva alla fine del gioco
+        this.scene.start('FineWerisAcquaviva', { score: this.score, time: this.time.now - this.startTime });
     }
     
 
@@ -571,9 +539,6 @@ export class WherisAcquaviva extends Phaser.Scene {
         const seconds = Math.floor((elapsed % 60000) / 1000);
         const timePenalty = (minutes * 60) + seconds; // Penalità in base al tempo
         const finalScore = this.score - timePenalty;  // Punteggio finale del livello
-    
-        // Aggiorna il testo del punteggio nella scena
-        //this.scoreText.setText(`Score: ${finalScore}`);
     
         // Aggiorna il punteggio globale nel GameState
         GameState.addScore(finalScore);
