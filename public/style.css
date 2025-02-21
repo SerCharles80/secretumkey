@@ -74,12 +74,19 @@ h6{font-size: 1rem;}
     font-family: "Poppins", serif;
     font-weight: 500;
     border: 2px solid var(--testo); 
-    border-radius: 20px; 
+    border-radius: 50px; 
     padding: 7px 20px; 
     background-color: var(--link); 
     color: var(--bianco); 
     -webkit-box-shadow: 0px 2px 0px 0px var(--testo); 
     box-shadow: 0px 2px 0px 0px var(--testo);
+}
+.b-button a{
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    color: var(--bianco);
+    font-size: 14px;
+    text-decoration: none;
 }
 
 .b-button--rosso,

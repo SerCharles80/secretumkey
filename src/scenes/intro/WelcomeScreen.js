@@ -43,7 +43,7 @@ export class WelcomeScreen extends Phaser.Scene {
         const spiegazioneImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'spiegazione').setOrigin(0.5);
 
         // Ridimensiona l'immagine per adattarla al contenitore
-        spiegazioneImage.setScale(Math.min(this.cameras.main.width / spiegazioneImage.width, this.cameras.main.height / spiegazioneImage.height) * 0.8);
+        spiegazioneImage.setScale(Math.min(this.cameras.main.width / spiegazioneImage.width, this.cameras.main.height / spiegazioneImage.height) * 0.9);
 
         // Crea il nuovo pulsante riutilizzabile
         this.startButton = createPrimaryButton(

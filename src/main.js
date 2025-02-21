@@ -5,7 +5,9 @@ import { FineWerisAcquaviva } from './scenes/end/FineWerisAcquaviva';
 import { SweetPeachInstructions } from './scenes/intro/SweetPeachInstructions';
 import { SweetPeach } from './scenes/SweetPeach';
 import { FineSweetPeach } from './scenes/end/FineSweetPeach';
-//import { FineSweetPeach } from './scenes/end/FineSweetPeach';
+import { FlagPuzzleIntro } from './scenes/intro/FlagPuzzleIntro';
+import FlagPuzzle from './scenes/FlagPuzzle.js';
+import { FineFlagPuzzle } from './scenes/end/FineFlagPuzzle';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -22,12 +24,15 @@ window.onload = function () {
         parent: 'contenitore-gioco-phaser',
         backgroundColor: '#FFFBF5', // Imposta il colore di sfondo globale qui
         scene: [
-            //WelcomeScreen, 
-            //WherisAcquaviva,
-            //FineWerisAcquaviva,
-            //SweetPeachInstructions,
+            WelcomeScreen, 
+            WherisAcquaviva,
+            FineWerisAcquaviva,
+            SweetPeachInstructions,
             SweetPeach,
-            FineSweetPeach
+            FineSweetPeach,
+            FlagPuzzleIntro,
+            FlagPuzzle,
+            FineFlagPuzzle
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext
