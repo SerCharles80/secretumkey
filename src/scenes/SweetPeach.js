@@ -8,6 +8,7 @@ export class SweetPeach extends Phaser.Scene {
         this.score = 0;
         this.correctIngredientsCount = 0;
         this.isDialogOpen = false; // Variabile per tracciare se la finestra di dialogo è aperta
+        this.startTime = 0; // Aggiunto per tracciare il tempo di gioco
     }
 
     preload() {
@@ -29,99 +30,59 @@ export class SweetPeach extends Phaser.Scene {
         this.load.image('bustina di lievito', 'assets/sweetpeach/lievito.png');
     }
 
-    create() {
-        
+    create() {  
+        // tracciamo il tempo di gioco
+        this.startTime = this.time.now;
+
         // Imposta il colore di sfondo
         this.cameras.main.setBackgroundColor('#FFFBF5');
 
-        // Aggiungi l'immagine della credenza e mantienila fissa
-        this.credenza = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 100, 'credenza').setOrigin(0.5);
+        // Definisci posizioni fisse in base alle dimensioni iniziali (non cambiano in seguito)
+        const fixedCenterX = 195;   // Per esempio, se lo schermo è 800px
+        const fixedCenterY = 340;   // Se lo schermo è 600px
 
+        // Posiziona la credenza in modo fisso
+        this.credenza = this.add.image(fixedCenterX, fixedCenterY - 100, 'credenza').setOrigin(0.5);
         
-
-        // Crea il cesto in basso
-        this.cesto = this.add.image(this.cameras.main.centerX, this.cameras.main.height - 50, 'cesto').setOrigin(0.5).setScale(1);
-
-        // Definisci la zona di fermata nel cesto (valori da adattare in base alla tua immagine)
+        // Posiziona il cesto in basso
+        this.cesto = this.add.image(fixedCenterX, 550, 'cesto').setOrigin(0.5).setScale(1);
         this.cesto.zoneDiFermata = new Phaser.Geom.Rectangle(
-            this.cesto.x - 50, // X iniziale della zona
-            this.cesto.y - 80, // Y iniziale della zona
-            100, // Larghezza della zona
-            60  // Altezza della zona
+            fixedCenterX - 50,
+            550 - 80,
+            100,
+            60
         );
 
-        // Definizione degli ingredienti
+        // Definizione degli ingredienti con posizioni fisse
         this.ingredients = [
-            { key: '500g di farina', x: 80, y: 97, isCorrect: true, scale:0.5 },
-            { key: '200g di zucchero', x: 150, y: 90, isCorrect: true, scale:0.5 },
-            { key: '100g di burro', x: 250, y: 105, isCorrect: true, scale:0.5 },
-            { key: '100ml di latte', x: 350, y: 88, isCorrect: true, scale:0.5 },
-            { key: '80g di sale', x: 60, y: 200, isCorrect: false, scale:0.3},
-            { key: '100ml d\'olio', x: 130, y: 180, isCorrect: false, scale:0.5 },
-            { key: '200ml di detersivo', x: 200, y: 190, isCorrect: false, scale:0.4 }, // Ingrediente errato
-            { key: 'tre uova', x: 260, y: 200, isCorrect: true, scale:0.4 },
-            { key: 'bustina di lievito', x: 330, y: 210, isCorrect: true, scale:0.3 }
+            { key: '500g di farina', x: 80, y: 97, isCorrect: true, scale: 0.5 },
+            { key: '200g di zucchero', x: 150, y: 90, isCorrect: true, scale: 0.5 },
+            { key: '100g di burro', x: 250, y: 105, isCorrect: true, scale: 0.5 },
+            { key: '100ml di latte', x: 350, y: 88, isCorrect: true, scale: 0.5 },
+            { key: '80g di sale', x: 60, y: 200, isCorrect: false, scale: 0.3 },
+            { key: '100ml d\'olio', x: 130, y: 180, isCorrect: false, scale: 0.5 },
+            { key: '200ml di detersivo', x: 200, y: 190, isCorrect: false, scale: 0.4 },
+            { key: 'tre uova', x: 260, y: 200, isCorrect: true, scale: 0.4 },
+            { key: 'bustina di lievito', x: 330, y: 210, isCorrect: true, scale: 0.3 }
         ];
 
-        // Salva il centro iniziale della scena
-        const centerX = this.cameras.main.centerX;
-        const centerY = this.cameras.main.centerY;
-
+        // Crea gli ingredienti in posizioni fisse
         this.ingredients.forEach(ingredient => {
-            // Calcola l'offset rispetto al centro iniziale
-            const offsetX = ingredient.x - centerX;
-            const offsetY = ingredient.y - centerY;
-            // Salva l'offset nell'oggetto ingrediente per usarlo in fase di resize
-            ingredient.offsetX = offsetX;
-            ingredient.offsetY = offsetY;
-            
-            // Crea lo sprite posizionandolo in base al centro attuale + offset
-            ingredient.sprite = this.add.image(centerX + offsetX, centerY + offsetY, ingredient.key)
+            ingredient.sprite = this.add.image(ingredient.x, ingredient.y, ingredient.key)
                 .setInteractive()
                 .setScale(ingredient.scale);
-            
-            // Salva i dati dell'ingrediente nello sprite
             ingredient.sprite.setData('ingredient', ingredient);
-            
-            // Imposta l'evento di interazione
             ingredient.sprite.on('pointerdown', () => {
-                if (!this.isDialogOpen) { // Controlla se la finestra di dialogo è aperta
+                if (!this.isDialogOpen) {
                     this.showConfirmationPanel(ingredient.sprite);
                 }
             });
         });
-            
 
-         // Aggiungi un listener per l'evento di ridimensionamento della finestra
-         this.scale.on('resize', this.resize, this);
+        // NON regisatrate alcun listener di resize, in modo che le posizioni restino fisse.
+        // this.scale.on('resize', this.resize, this);  // <- Rimosso
 
-        // Punteggio iniziale
         this.updateScore();
-    }
-
-    resize(gameSize, baseSize, displaySize, resolution) {
-        const width = gameSize.width;
-        const height = gameSize.height;
-    
-        // Ridimensiona la camera
-        this.cameras.resize(width, height);
-    
-        // Nuovo centro della camera
-        const newCenterX = this.cameras.main.centerX;
-        const newCenterY = this.cameras.main.centerY;
-    
-        // Riposiziona la credenza (se necessario)
-        this.credenza && this.credenza.setPosition(newCenterX, newCenterY - 100);
-    
-        // Riposiziona il cesto
-        this.cesto.setPosition(newCenterX, this.cameras.main.height - 50);
-    
-        // Riposiziona gli ingredienti usando gli offset salvati
-        this.ingredients.forEach(ingredient => {
-            if (ingredient.sprite) {
-                ingredient.sprite.setPosition(newCenterX + ingredient.offsetX, newCenterY + ingredient.offsetY);
-            }
-        });
     }
         
 
@@ -180,28 +141,26 @@ export class SweetPeach extends Phaser.Scene {
             this.score += 1000;
             this.correctIngredientsCount++;
 
-            // Anima la caduta nel cesto
+            // Anima la caduta nel cesto con crescita del 20% di dimensione
             this.tweens.add({
                 targets: ingredient,
                 x: this.cesto.x,
                 y: this.cesto.y - 30,
+                scaleX: ingredient.scale * 1.2,
+                scaleY: ingredient.scale * 1.2,
                 duration: 500,
                 onComplete: () => {
                     // Posiziona l'ingrediente in una posizione casuale all'interno della zona di fermata
                     const randomX = Phaser.Math.Between(this.cesto.zoneDiFermata.left, this.cesto.zoneDiFermata.right);
                     const randomY = Phaser.Math.Between(this.cesto.zoneDiFermata.top, this.cesto.zoneDiFermata.bottom);
-
                     ingredient.setPosition(randomX, randomY);
 
-                    // Disabilita *immediatamente* l'interattività
+                    // Disabilita immediatamente l'interattività
                     ingredient.disableInteractive();
                     
-                    //ingredient.destroy();
                     this.showFeedback('correctFeedback');
-
                 }
             });
-
         } else {
             this.score -= 200;
             this.showFeedback('wrongFeedback');
@@ -212,7 +171,19 @@ export class SweetPeach extends Phaser.Scene {
 
         // Controlla se tutti gli ingredienti corretti sono stati presi
         if (this.correctIngredientsCount === 6) {
-            this.time.delayedCall(1500, () => this.scene.start('FineSweetPeach', { score: this.score }));
+             // Calcola il tempo trascorso in secondi
+             const timeElapsed = this.time.now - this.startTime;
+             const timeInSeconds = Math.floor(timeElapsed / 1000);
+
+             // Sottrai il tempo dal punteggio finale (1 punto per secondo)
+            const finalScore = this.score - timeInSeconds;
+
+            this.time.delayedCall(1500, () => 
+                this.scene.start('FineSweetPeach', { 
+                    score: finalScore, 
+                    time: timeElapsed  
+                })
+            );
         }
     }
 
@@ -227,10 +198,8 @@ export class SweetPeach extends Phaser.Scene {
     }
 
     updateScore() {
-        const scoreDiv = document.getElementById('PunteggioTotaleDiv');
-        if (scoreDiv) {
-            scoreDiv.innerText = `Punteggio: ${GameState.getScore() + this.score}`;
-        }
+        // Score update now handled via GameState.
+        // Removed HTML div update.
     }
 
 }

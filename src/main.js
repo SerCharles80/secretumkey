@@ -6,7 +6,7 @@ import { SweetPeachInstructions } from './scenes/intro/SweetPeachInstructions';
 import { SweetPeach } from './scenes/SweetPeach';
 import { FineSweetPeach } from './scenes/end/FineSweetPeach';
 import { FlagPuzzleIntro } from './scenes/intro/FlagPuzzleIntro';
-import FlagPuzzle from './scenes/FlagPuzzle.js';
+import { FlagPuzzle } from './scenes/FlagPuzzle';
 import { FineFlagPuzzle } from './scenes/end/FineFlagPuzzle';
 
 window.onload = function () {
@@ -28,7 +28,7 @@ window.onload = function () {
             WherisAcquaviva,
             FineWerisAcquaviva,
             SweetPeachInstructions,
-            SweetPeach,
+            SweetPeach,             
             FineSweetPeach,
             FlagPuzzleIntro,
             FlagPuzzle,

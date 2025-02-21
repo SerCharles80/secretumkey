@@ -1,5 +1,5 @@
-import Phaser from 'phaser';
 import { createPrimaryButton } from '../utilita/bottonepri.js';
+import Phaser from 'phaser';
 
 const SlidingPuzzle = {
     ALLOW_CLICK: 0,
@@ -26,7 +26,7 @@ const SlidingPuzzle = {
  * http://www.nordinho.net/vbull/blogs/lunanik/6131-slider-puzzles-solved-once-all.html
  */
 
-export default class FlagPuzzle extends Phaser.Scene
+export class FlagPuzzle extends Phaser.Scene
 {
     constructor ()
     {
@@ -80,7 +80,7 @@ export default class FlagPuzzle extends Phaser.Scene
         this.load.image('background', 'assets/flagpuzzle/agricoltura300.jpg');
         this.load.image('logo', 'assets/flagpuzzle/agricoltura300.jpg');
         this.load.image('box', 'assets/flagpuzzle/agricoltura300.jpg');
-        this.load.image('box-inside', '../../assets/flagpuzzle/agricoltura300.jpg');
+        this.load.image('box-inside', 'assets/flagpuzzle/agricoltura300.jpg');
         this.load.image('pic1', 'assets/flagpuzzle/agricoltura300.jpg');
         this.load.image('pic2', 'assets/flagpuzzle/arancione300.png');
         this.load.image('pic3', 'assets/flagpuzzle/verde-arancione.png');
@@ -526,10 +526,16 @@ export default class FlagPuzzle extends Phaser.Scene
     
 
     calculateScore() {
-        const elapsed = (this.time.now - this.startTime) / 1000; // Tempo in secondi
+        // Calcola il tempo trascorso in millisecondi
+        const timeElapsed = this.time.now - this.startTime;
+        // Calcola il punteggio base meno il tempo in secondi
         const baseScore = 10000;
-        const finalScore = Math.ceil(baseScore - elapsed); // Arrotonda per eccesso
+        const finalScore = Math.max(0, Math.ceil(baseScore - (timeElapsed / 1000)));
 
-        this.scene.start('FineFlagPuzzle', { score: finalScore, time: elapsed });
+        // Passa solo punteggio e tempo alla scena finale
+        this.scene.start('FineFlagPuzzle', { 
+            score: finalScore, 
+            time: timeElapsed 
+        });
     }
 }

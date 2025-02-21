@@ -9,6 +9,7 @@ const GameState = {
      */
     addScore(points) {
         this.totalScore += points;
+        this.updateDisplay(); // Aggiorna il display ogni volta che il punteggio cambia
         console.log(`Nuovo punteggio totale: ${this.totalScore}`);
     },
 
@@ -25,8 +26,27 @@ const GameState = {
      */
     resetScore() {
         this.totalScore = 0;
+        this.updateDisplay(); // Aggiorna il display quando il punteggio viene resettato
         console.log("Punteggio totale resettato.");
+    },
+
+    // Nuovo metodo per aggiornare il display
+    updateDisplay() {
+        const scoreDiv = document.getElementById('PunteggioTotaleDiv');
+        if (scoreDiv) {
+            scoreDiv.innerText = `Punti: ${this.totalScore}`;
+        } else {
+            console.error("Div 'PunteggioTotaleDiv' non trovato!");
+        }
+    },
+
+    // Inizializza il display al caricamento
+    init() {
+        this.updateDisplay();
     }
 };
+
+// Inizializza il display quando il modulo viene caricato
+GameState.init();
 
 export { GameState };

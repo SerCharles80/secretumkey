@@ -40,8 +40,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "franc"}
                 ], 
                 correct: 1 
-            },
-            { 
+            }
+            /*{ 
                 question: "La regione si chiama Marche, qual è la bandiera?", 
                 answers: [
                     {type: "image", value: "marc"},
@@ -52,8 +52,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "tosc"}
                 ], 
                 correct: 0 
-            },
-            { 
+            }
+           /* { 
                 question: "La provincia è quella di Ascoli piceno, qual'è lo stemma?", 
                 answers: [
                     {type: "image", value: "mace"},
@@ -187,7 +187,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "text", value:"Acquaviva"}
                 ], 
                 correct: 0 
-            }
+            }*/
 
         ];
         this.currentQuestionIndex = 0;
@@ -419,15 +419,12 @@ export class WherisAcquaviva extends Phaser.Scene {
     }
 
     checkAnswer(index, balloon, answerElement) {
-        // Controlla se la risposta è corretta
         const question = this.questions[this.currentQuestionIndex];
         if (index === question.correct) {
-            this.score += 10000;
-            this.calculateFinalScore();
+            this.score += 1000;
             this.showCorrectAnswer(balloon, answerElement);
         } else {
             this.score -= 200;
-            this.calculateFinalScore();
             this.showWrongAnswer(balloon, answerElement);
         }
     }
@@ -512,8 +509,11 @@ export class WherisAcquaviva extends Phaser.Scene {
         }
     }
     showCompletionMessage() {
-        // Mostra la scena FineWerisAcquaviva alla fine del gioco
-        this.scene.start('FineWerisAcquaviva', { score: this.score, time: this.time.now - this.startTime });
+        // Just pass raw score and time to FineWerisAcquaviva
+        this.scene.start('FineWerisAcquaviva', { 
+            score: this.score, 
+            time: this.time.now - this.startTime 
+        });
     }
     
 
@@ -522,30 +522,9 @@ export class WherisAcquaviva extends Phaser.Scene {
         return value.toString().padStart(2, '0');
     }
     
-    // Aggiorna il div HTML esterno con il punteggio globale
-    updateGlobalScoreDisplay() {
-        const scoreDiv = document.getElementById('PunteggioTotaleDiv');
-        if (scoreDiv) {
-            scoreDiv.innerText = `Punti: ${GameState.getScore()}`;
-        } else {
-            console.error("Div 'PunteggioTotaleDiv' non trovato!");
-        }
-    }
+    // Remove updateGlobalScoreDisplay() method
  
-    calculateFinalScore() {
-        // Calcola il punteggio del livello
-        const elapsed = this.time.now - this.startTime;
-        const minutes = Math.floor(elapsed / 60000);
-        const seconds = Math.floor((elapsed % 60000) / 1000);
-        const timePenalty = (minutes * 60) + seconds; // Penalità in base al tempo
-        const finalScore = this.score - timePenalty;  // Punteggio finale del livello
-    
-        // Aggiorna il punteggio globale nel GameState
-        GameState.addScore(finalScore);
-    
-        // Aggiorna il div esterno con il punteggio globale
-        this.updateGlobalScoreDisplay();
-    }
+    // Remove calculateFinalScore() method
 
 }
 
