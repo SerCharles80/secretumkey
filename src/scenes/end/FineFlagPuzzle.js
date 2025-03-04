@@ -28,7 +28,7 @@ export class FineFlagPuzzle extends Phaser.Scene {
 
         // Scala l'immagine
         const scaleX = this.cameras.main.width / salutoImage.width;
-        const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
+        const scaleY = (this.cameras.main.height * 0.5) / salutoImage.height;
         const scale = Math.min(scaleX, scaleY);
         salutoImage.setScale(scale);
 
@@ -62,7 +62,7 @@ export class FineFlagPuzzle extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('NextLevel')
+            () => this.scene.start('PietaIntro')
         );
     }
 

@@ -2,14 +2,14 @@ import Phaser from 'phaser';
 import { createPrimaryButton } from '../../utilita/bottonepri.js';
 import { GameState } from '../../stato/GameState.js';  // Ensure GameState is imported
 
-export class FineSweetPeach extends Phaser.Scene {
+export class FinePietaSegreta extends Phaser.Scene {
     constructor() {
-        super({ key: 'FineSweetPeach' });
+        super({ key: 'FinePietaSegreta' });
     }
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('salutoSweet', 'assets/sweetpeach/schermata-finale-sweetpeach.png');
+        this.load.image('finepieta', 'assets/pietasegreta/conclusione-pietasegreta.png');
     }
 
     create(data) {
@@ -21,23 +21,22 @@ export class FineSweetPeach extends Phaser.Scene {
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
         // Aggiungi l'immagine di saluto e adatta allo schermo
-        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'salutoSweet')
+        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'finepieta')
             .setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
-        const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
+        const scaleY = (this.cameras.main.height * 0.5) / salutoImage.height;
         const scale = Math.min(scaleX, scaleY);
         salutoImage.setScale(scale);
 
         // Mostra solo il punteggio di questo livello
         const scoreText = this.add.text(
             this.cameras.main.centerX,
-            salutoImage.y + salutoImage.displayHeight + 20,
+            salutoImage.y + salutoImage.displayHeight + 40,
             `Punteggio livello: ${data.score}`, {
                 fontFamily: 'Poppins',
                 fontSize: '28px',
                 color: '#343434',
-                fontWeight: 'bold',
-                // wordWrap: { width: this.cameras.main.width * 0.9 } 
+                fontWeight: 'bold'
             }
         ).setOrigin(0.5);
 
@@ -59,7 +58,7 @@ export class FineSweetPeach extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello', 
-            () => this.scene.start('FlagPuzzleIntro')
+            () => this.scene.start('nextLevel')
         );
     }
 

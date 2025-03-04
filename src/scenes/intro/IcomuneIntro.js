@@ -1,15 +1,14 @@
 import Phaser from 'phaser';
 import { createPrimaryButton } from '../../utilita/bottonepri.js';
 
-export class FlagPuzzleIntro extends Phaser.Scene {
+export class IcomuneIntro extends Phaser.Scene {
     constructor() {
-        super({ key: 'FlagPuzzleIntro' }); 
+        super({ key: 'IcomuneIntro' }); 
     }
 
     preload() {
-        // Carica l'immagine delle istruzioni per Flag Puzzle.
-        // Assicurati che il file esista nel percorso indicato.
-        this.load.image('flagpuzleintro', 'assets/flagpuzzle/ingresso-flug-puzzle.png');
+        //carico il file immagine di istruzioni
+        this.load.image('icomuneIntro', 'assets/icomune/icomune-intro.png');
     }
 
     create() {
@@ -20,11 +19,12 @@ export class FlagPuzzleIntro extends Phaser.Scene {
         const titleText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1, // Posizionato al 10% dell'altezza
-            'Flag Puzzle',
+            'I-Comune',
             {
-                fontFamily: 'Arial',
-                fontSize: '40px',
-                color: '#000000'
+                fontFamily: 'Poppins',
+                fontSize: '34px',
+                color: '#000000',
+                wordWrap: { width: this.cameras.main.width * 0.8 }
             }
         ).setOrigin(0.5, 0.5);
 
@@ -36,7 +36,7 @@ export class FlagPuzzleIntro extends Phaser.Scene {
         const instructionsImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.25,
-            'flagpuzleintro'
+            'icomuneIntro'
         ).setOrigin(0.5, 0);
 
         // Ridimensiona l'immagine per adattarla alla larghezza della scena
@@ -54,7 +54,7 @@ export class FlagPuzzleIntro extends Phaser.Scene {
             'Continua',
             () => {
                 console.log("Pulsante Continua premuto!");
-                this.scene.start('FlagPuzzle'); // Avvia la scena del gioco FlagPuzzle
+                this.scene.start('Icomune'); // Avvia la scena del gioco FlagPuzzle
             }
         );
     }

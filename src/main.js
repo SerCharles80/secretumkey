@@ -8,6 +8,11 @@ import { FineSweetPeach } from './scenes/end/FineSweetPeach';
 import { FlagPuzzleIntro } from './scenes/intro/FlagPuzzleIntro';
 import { FlagPuzzle } from './scenes/FlagPuzzle';
 import { FineFlagPuzzle } from './scenes/end/FineFlagPuzzle';
+import { PietaIntro } from './scenes/intro/PietaIntro';
+import { PietaSegreta } from './scenes/PietaSegreta';
+import { FinePietaSegreta } from './scenes/end/FinePietaSegreta';
+import { IcomuneIntro } from './scenes/intro/IcomuneIntro';
+import { Icomune } from './scenes/Icomune';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -24,15 +29,20 @@ window.onload = function () {
         parent: 'contenitore-gioco-phaser',
         backgroundColor: '#FFFBF5', // Imposta il colore di sfondo globale qui
         scene: [
-            WelcomeScreen, 
-            WherisAcquaviva,
-            FineWerisAcquaviva,
-            SweetPeachInstructions,
-            SweetPeach,             
-            FineSweetPeach,
-            FlagPuzzleIntro,
-            FlagPuzzle,
-            FineFlagPuzzle
+            // WelcomeScreen, 
+            // WherisAcquaviva,
+            // FineWerisAcquaviva,
+            // SweetPeachInstructions,
+            // SweetPeach,             
+            // FineSweetPeach,
+            // FlagPuzzleIntro,
+            // FlagPuzzle,
+            // FineFlagPuzzle,
+            // PietaIntro,
+            // PietaSegreta,
+            // FinePietaSegreta,
+            // IcomuneIntro,
+            Icomune
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext

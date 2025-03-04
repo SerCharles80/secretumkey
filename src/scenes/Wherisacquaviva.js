@@ -40,8 +40,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "franc"}
                 ], 
                 correct: 1 
-            }
-            /*{ 
+            },
+            { 
                 question: "La regione si chiama Marche, qual è la bandiera?", 
                 answers: [
                     {type: "image", value: "marc"},
@@ -52,8 +52,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "tosc"}
                 ], 
                 correct: 0 
-            }
-           /* { 
+            },
+            { 
                 question: "La provincia è quella di Ascoli piceno, qual'è lo stemma?", 
                 answers: [
                     {type: "image", value: "mace"},
@@ -63,8 +63,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "peru"}
                 ], 
                 correct: 2 
-            },
-            { 
+            }
+            /*{ 
                 question: "E lo stemma del Comune?", 
                 answers: [
                     {type: "image", value: "ter"},

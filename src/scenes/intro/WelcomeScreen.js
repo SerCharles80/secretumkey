@@ -34,7 +34,7 @@ export class WelcomeScreen extends Phaser.Scene {
         // Aggiungi il titolo del gioco sopra l'immagine di spiegazione
         const titleText = this.add.text(this.cameras.main.centerX, this.cameras.main.height * 0.13, 'WherisAcquaviva', {
             fontFamily: 'Poppins',
-            fontSize: '36px',
+            fontSize: '32px',
             color: '#000000',
             wordWrap: { width: this.cameras.main.width * 0.8 }
         }).setOrigin(0.5);
@@ -43,13 +43,13 @@ export class WelcomeScreen extends Phaser.Scene {
         const spiegazioneImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'spiegazione').setOrigin(0.5);
 
         // Ridimensiona l'immagine per adattarla al contenitore
-        spiegazioneImage.setScale(Math.min(this.cameras.main.width / spiegazioneImage.width, this.cameras.main.height / spiegazioneImage.height) * 0.9);
+        spiegazioneImage.setScale(Math.min(this.cameras.main.width / spiegazioneImage.width, this.cameras.main.height / spiegazioneImage.height) * 0.8);
 
         // Crea il nuovo pulsante riutilizzabile
         this.startButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
-            this.cameras.main.centerY + 230,
+            this.cameras.main.centerY + (spiegazioneImage.displayHeight / 2) +30,
             'Avvia Secretum',
             () => {
                 console.log("Pulsante Avvia Secretum premuto, avvio il gioco...");

@@ -129,9 +129,9 @@ body{
     position: absolute;
     display: flex; 
     justify-content: center;
-    align-items: center; 
+    /* align-items: center;  */
     padding-bottom: 50px;
-    padding-top: 50px;
+    padding-top: 70px;
     width: 100%; 
     height: 100%;
     top: 0;
@@ -140,8 +140,8 @@ body{
 }
 
 #contenitore-gioco-phaser{
-    width: 70%;
-    height: 75%;
+    width: 100%;
+    height: 90%;
     display: flex; 
     flex-direction: column; 
     align-items: center; 

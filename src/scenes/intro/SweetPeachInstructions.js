@@ -23,7 +23,7 @@ export class SweetPeachInstructions extends Phaser.Scene {
             'Sweet Peach',
             {
                 fontFamily: 'Arial',
-                fontSize: '48px',
+                fontSize: '38px',
                 color: '#000000'
             }
         ).setOrigin(0.5, 0.5);
@@ -50,7 +50,7 @@ export class SweetPeachInstructions extends Phaser.Scene {
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
-            this.cameras.main.height * 0.8, // Posizionato al 80% dell'altezza
+            this.cameras.main.centerY + (instructionsImage.displayHeight / 2) +30,
             'Continua',
             () => {
                 console.log("Pulsante Continua premuto!");
