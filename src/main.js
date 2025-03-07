@@ -13,6 +13,16 @@ import { PietaSegreta } from './scenes/PietaSegreta';
 import { FinePietaSegreta } from './scenes/end/FinePietaSegreta';
 import { IcomuneIntro } from './scenes/intro/IcomuneIntro';
 import { Icomune } from './scenes/Icomune';
+import { FineIcomune } from './scenes/end/FineIcomune';
+import { SponsaliaDecoIntro } from './scenes/intro/SponsaliaDecoIntro';
+import { SponsaliaDeco } from './scenes/SponsaliaDeco';
+import { FineSponsaliaDeco } from './scenes/end/FineSponsaliaDeco';
+import { CamminamiIntro } from './scenes/intro/CamminamiIntro';
+import { Camminami } from './scenes/Camminami';
+import { FineCamminami } from './scenes/end/FineCamminami';
+import { FortezzaGostIntro } from './scenes/intro/FortezzaGostIntro';
+import { FortezzaGost } from './scenes/FortezzaGost';
+import { FineFortezzaGost } from './scenes/end/FineFortezzaGost';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -40,9 +50,19 @@ window.onload = function () {
             // FineFlagPuzzle,
             // PietaIntro,
             // PietaSegreta,
-            // FinePietaSegreta,
+            // // FinePietaSegreta,
             // IcomuneIntro,
-            Icomune
+            // Icomune,
+            // FineIcomune,
+            // SponsaliaDecoIntro,
+            // SponsaliaDeco,
+            // FineSponsaliaDeco,
+            // CamminamiIntro,
+            // Camminami,
+            // FineCamminami,
+            FortezzaGostIntro,
+            FortezzaGost,
+            FineFortezzaGost
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext

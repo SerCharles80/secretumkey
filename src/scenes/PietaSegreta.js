@@ -243,5 +243,3 @@ export class PietaSegreta extends Phaser.Scene {
         return this.grattaMask.getGlobalBounds().area;
     }
 }
-
-

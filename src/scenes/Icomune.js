@@ -17,7 +17,7 @@ export class Icomune extends Phaser.Scene {
         this.balloons = [];
         // Definisci le domande e le risposte
         this.questions = [
-            /*{ 
+            { 
                 question: "La sede del comune è all’interno di un palazzo storico. Qual è il nome attuale del palazzo?", 
                 answers: [
                     {type: "image", value: "Palazzo Acquaviva"},
@@ -51,7 +51,7 @@ export class Icomune extends Phaser.Scene {
                     {type: "image", value: "Cancelli Spaccasassi"}
                 ], 
                 correct: 1 
-            },*/
+            },
             { 
                 question: "Una delle stanze è affrescata con un ciclo pittorico dedicato a quale amore?", 
                 answers: [
@@ -219,6 +219,7 @@ export class Icomune extends Phaser.Scene {
             
             const maxWidth = this.cameras.main.width * 0.95;
             const question = this.questions[this.currentQuestionIndex];
+
             this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
                 fontFamily: 'Poppins',
                 fontSize: '20px',
@@ -228,7 +229,8 @@ export class Icomune extends Phaser.Scene {
             }).setOrigin(0.5);
         
             this.answerElements = []; // Reset dell'array prima di creare nuove risposte
-        
+            
+            
             question.answers.forEach((answer, index) => {
 
             // Calcola la posizione in una griglia 2xN
@@ -374,7 +376,7 @@ export class Icomune extends Phaser.Scene {
     }
     showCompletionMessage() {
         // Just pass raw score and time to FineWerisAcquaviva
-        this.scene.start('FineWerisAcquaviva', { 
+        this.scene.start('FineIcomune', { 
             score: this.score, 
             time: this.time.now - this.startTime 
         });
