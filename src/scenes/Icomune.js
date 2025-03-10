@@ -17,64 +17,128 @@ export class Icomune extends Phaser.Scene {
         this.balloons = [];
         // Definisci le domande e le risposte
         this.questions = [
-            { 
-                question: "La sede del comune è all’interno di un palazzo storico. Qual è il nome attuale del palazzo?", 
+            // { 
+            //     question: "La sede del comune è all’interno di un palazzo storico. Qual è il nome attuale del palazzo?", 
+            //     answers: [
+            //         {type: "image", value: "Palazzo Acquaviva"},
+            //         {type: "image", value: "Palazzo Brunforte"}, 
+            //         {type: "image", value: "Palazzo Chigi"},
+            //         {type: "image", value: "Palazzo Chiappini"}, 
+            //         {type: "image", value: "Palazzo Campanelli"}
+            //     ], 
+            //     correct: 3 
+            // },
+            // { 
+            //     question: "Quale famiglia nobile ha deciso la costruzione del palazzo?", 
+            //     answers: [
+            //         {type: "image", value: "Famiglia Acquaviva"},
+            //         {type: "image", value: "Famiglia Brunforti"}, 
+            //         {type: "image", value: "Famiglia Neroni"},
+            //         {type: "image", value: "Famiglia Infriccioli"}, 
+            //         {type: "image", value: "Famiglia Cancelli"},
+            //         {type: "image", value: "Famiglia Campanelli"}
+            //     ], 
+            //     correct: 4 
+            // },
+            // { 
+            //     question: "Quale coppia di famiglie ha abitato il palazzo?", 
+            //     answers: [
+            //         {type: "image", value: "Cancelli Acquaviva"},
+            //         {type: "image", value: "Cancelli Cancelli"}, 
+            //         {type: "image", value: "Cancelli Neroni"},
+            //         {type: "image", value: "Cancelli Sforza"}, 
+            //         {type: "image", value: "Brunforte Cancelli"},
+            //         {type: "image", value: "Cancelli Spaccasassi"}
+            //     ], 
+            //     correct: 2 
+            // },
+            // { 
+            //     question: "Una delle stanze è affrescata con un ciclo pittorico dedicato a quale amore?", 
+            //     answers: [
+            //         {type: "image", value: "Agamennone e Elena"},
+            //         {type: "image", value: "Amore e Psiche"}, 
+            //         {type: "image", value: "Artù e Ginevra"},
+            //         {type: "image", value: "Ettore e Andromaca"}, 
+            //         {type: "image", value: "Giulietta e Romeo"},
+            //         {type: "image", value: "Tristano e Isotta"}
+            //     ], 
+            //     correct: 1 
+            // },
+            // { 
+            //     question: "Quale dea, moglie di Zeus/Giove, è rappresentata in un affresco che dà il nome alla sala?", 
+            //     answers: [
+            //         {type: "image", value: "Dea Teti"},
+            //         {type: "image", value: "Dea Hera"}, 
+            //         {type: "image", value: "Dea Demetra"},
+            //         {type: "image", value: "Dea Dafne"}, 
+            //         {type: "image", value: "Dea Atena"}
+            //     ], 
+            //     correct: 1 
+            // },
+            // { 
+            //     question: "Chi traina il suo carro?", 
+            //     answers: [
+            //         {type: "image", value: "Bovini"},
+            //         {type: "image", value: "Cavalli"}, 
+            //         {type: "image", value: "Cavallucci Marini"},
+            //         {type: "image", value: "Elefanti"}, 
+            //         {type: "image", value: "Pavoni"}
+            //     ], 
+            //     correct: 4 
+            // },
+            // { 
+            //     question: "Chi è la divinità greco-romana, figlia di Zeus/Giove, raffigurata nell'affresco al centro del soffitto di una delle sale?", 
+            //     answers: [
+            
+            //         {type: "image", value: "Atena"},
+            //         {type: "image", value: "Afrodite"}, 
+            //         {type: "image", value: "Dafne"},
+            //         {type: "image", value: "Demetra"}, 
+            //         {type: "image", value: "Teti"}
+            //     ], 
+            //     correct: 1 
+            // },
+            // { 
+            //     question: "Chi traina il suo carro?", 
+            //     answers: [
+            //         {type: "image", value: "Oche"},
+            //         {type: "image", value: "Cavalli"}, 
+            //         {type: "image", value: "Cavallucci Marini"},
+            //         {type: "image", value: "Elefanti"}, 
+            //         {type: "image", value: "Pavoni"}
+            //     ], 
+            //     correct: 0 
+            // },
+            // { 
+            //     question: "Una sala è dedicata alla Religione Cristiana a quale Testamento?", 
+            //     answers: [
+            //         {type: "image", value: "Vecchio Testamento"},
+            //         {type: "image", value: "Nuovo Testamento"},                   
+            //     ], 
+            //     correct: 0 
+            // },
+            // { 
+            //     question: "Una sala è affrescata con un genere artistico specifico. Quale?", 
+            //     answers: [
+            //         {type: "image", value: "Commedia"},
+            //         {type: "image", value: "Musica"}, 
+            //         {type: "image", value: "Poesia"},
+            //         {type: "image", value: "Tecnologia"}, 
+            //         {type: "image", value: "Tragedia"}
+            //     ], 
+            //     correct: 1 
+            // },
+            {
+                question: "Palazzo chiappini è accessibile per chi ha difficoltà motorie?", 
                 answers: [
-                    {type: "image", value: "Palazzo Acquaviva"},
-                    {type: "image", value: "Palazzo Brunforte"}, 
-                    {type: "image", value: "Palazzo Chigi"},
-                    {type: "image", value: "Palazzo Chiappini"}, 
-                    {type: "image", value: "Palazzo Campanelli"}
-                ], 
-                correct: 4 
-            },
-            { 
-                question: "Quale famiglia nobile ha deciso la costruzione del palazzo?", 
-                answers: [
-                    {type: "image", value: "Famiglia Acquaviva"},
-                    {type: "image", value: "Famiglia Brunforti"}, 
-                    {type: "image", value: "Famiglia Neroni"},
-                    {type: "image", value: "Famiglia Infriccioli"}, 
-                    {type: "image", value: "Famiglia Cancelli"},
-                    {type: "image", value: "Famiglia Campanelli"}
-                ], 
-                correct: 1 
-            },
-            { 
-                question: "Quale coppia di famiglie ha abitato il palazzo?", 
-                answers: [
-                    {type: "image", value: "Cancelli Acquaviva"},
-                    {type: "image", value: "Cancelli Cancelli"}, 
-                    {type: "image", value: "Cancelli Neroni"},
-                    {type: "image", value: "Cancelli Sforza"}, 
-                    {type: "image", value: "Brunforte Cancelli"},
-                    {type: "image", value: "Cancelli Spaccasassi"}
-                ], 
-                correct: 1 
-            },
-            { 
-                question: "Una delle stanze è affrescata con un ciclo pittorico dedicato a quale amore?", 
-                answers: [
-                    {type: "image", value: "Agamennone e Elena"},
-                    {type: "image", value: "Amore e Psiche"}, 
-                    {type: "image", value: "Artù e Ginevra"},
-                    {type: "image", value: "Ettore e Andromaca"}, 
-                    {type: "image", value: "Giulietta e Romeo"},
-                    {type: "image", value: "Tristano e Isotta"}
-                ], 
-                correct: 1 
-            },
-            { 
-                question: "Quale dea, moglie di Zeus/Giove, è rappresentata in un affresco che dà il nome alla sala?", 
-                answers: [
-                    {type: "image", value: "Dea Teti"},
-                    {type: "image", value: "Dea Hera"}, 
-                    {type: "image", value: "Dea Demetra"},
-                    {type: "image", value: "Dea Dafne"}, 
-                    {type: "image", value: "Dea Atena"}
+                    {type: "image", value: " "},
+                    {type: "image", value: "  "}, 
+                    {type: "image", value: "   "},
+                    {type: "image", value: "    "}                  
                 ], 
                 correct: 1 
             }
+
 
         ];
         this.currentQuestionIndex = 0;
@@ -83,6 +147,46 @@ export class Icomune extends Phaser.Scene {
     }
 
     preload() {
+
+         // Carico le dee per le risposte domanda11
+         this.load.image(' ', 'assets/icomune/11/antipatici.png');
+         this.load.image('  ', 'assets/icomune/11/ascensore.png');
+         this.load.image('   ', 'assets/icomune/11/scale.png');
+         this.load.image('    ', 'assets/icomune/11/scivolo.png');
+
+
+        // Carico le dee per le risposte domanda10
+        this.load.image('Commedia', 'assets/icomune/10/commedia.png');
+        this.load.image('Musica', 'assets/icomune/10/musica.png');
+        this.load.image('Poesia', 'assets/icomune/10/poesia.png');
+        this.load.image('Tecnologia', 'assets/icomune/10/tecnologia.png');
+        this.load.image('Tragedia', 'assets/icomune/10/tragedia.png');
+
+
+        // Carico le dee per le risposte domanda 9
+        this.load.image('Vecchio Testamento', 'assets/icomune/09/vecchio-testamento.png');
+        this.load.image('Nuovo Testamento', 'assets/icomune/09/nuovo-testamento.png');
+
+        // Carico le dee per le risposte domanda 8
+        this.load.image('Oche', 'assets/icomune/08/oche.png');
+        this.load.image('Cavalli', 'assets/icomune/08/cavalli.png');
+        this.load.image('Cavallucci Marini', 'assets/icomune/08/cavallucci-marini.png');
+        this.load.image('Elefanti', 'assets/icomune/08/elefanti.png');
+        this.load.image('Pavoni', 'assets/icomune/08/pavoni.png');
+
+        // Carico le dee per le risposte domanda 7
+        this.load.image('Afrodite', 'assets/icomune/07/afrodite.png');
+        this.load.image('Atena', 'assets/icomune/07/atena.png');
+        this.load.image('Dafne', 'assets/icomune/07/dafne.png');
+        this.load.image('Demetra', 'assets/icomune/07/demetra.png');
+        this.load.image('Teti', 'assets/icomune/07/teti.png');
+
+        // Carico le dee per le risposte domanda 6
+        this.load.image('Bovini', 'assets/icomune/06/bovini.png');
+        this.load.image('Cavalli', 'assets/icomune/06/cavalli.png');
+        this.load.image('Cavallucci Marini', 'assets/icomune/06/cavallucci-marini.png');
+        this.load.image('Elefanti', 'assets/icomune/06/elefanti.png');
+        this.load.image('Pavoni', 'assets/icomune/06/pavoni.png');
 
         // Carico le dee per le risposte domanda 5
         this.load.image('Dea Teti', 'assets/icomune/05/teti.png');
@@ -220,13 +324,21 @@ export class Icomune extends Phaser.Scene {
             const maxWidth = this.cameras.main.width * 0.95;
             const question = this.questions[this.currentQuestionIndex];
 
-            this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
-                fontFamily: 'Poppins',
-                fontSize: '20px',
-                color: '#000000',
-                align: 'center',
-                wordWrap: { width: maxWidth, useAdvancedWrap: true }
-            }).setOrigin(0.5);
+            this.questionText = this.add.text(
+                this.cameras.main.centerX,
+                0, // Posizione temporanea
+                question.question,
+                {
+                     fontFamily: 'Poppins',
+                     fontSize: '18px',
+                     color: '#000000',
+                     align: 'center',
+                     wordWrap: { width: maxWidth, useAdvancedWrap: true }
+                }
+            ).setOrigin(0.5);
+            // Calcola i bounds e posiziona il testo in modo che il bordo inferiore sia a 30px dal fondo
+            const textBounds = this.questionText.getBounds();
+            this.questionText.y = this.cameras.main.height - 30 - (textBounds.height / 2);
         
             this.answerElements = []; // Reset dell'array prima di creare nuove risposte
             
@@ -280,6 +392,18 @@ export class Icomune extends Phaser.Scene {
             });
         });           
         
+        if (this.answerElements.length > 0) {
+            let minY = Number.MAX_VALUE, maxY = 0;
+            this.answerElements.forEach(container => {
+                if (container.y < minY) { minY = container.y; }
+                if (container.y > maxY) { maxY = container.y; }
+            });
+            const gridHeight = maxY - minY;
+            const offsetY = (this.cameras.main.height - gridHeight) / 2 - minY;
+            this.answerElements.forEach(container => {
+                container.y += offsetY;
+            });
+        }
     }
 
     checkAnswer(index, container) {

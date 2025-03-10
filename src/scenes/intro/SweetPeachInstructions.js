@@ -9,7 +9,7 @@ export class SweetPeachInstructions extends Phaser.Scene {
     preload() {
         // Carica l'immagine delle istruzioni per SweetPeach.
         // Assicurati che il file esista nel percorso indicato.
-        this.load.image('sweetInstructions', 'assets/sweetpeach/spiegazione-gioco-sweetPeach.png');
+        this.load.image('sweetInstructions', 'assets/sweetpeach/spiegazione-sweetpeach_new.png');
     }
 
     create() {

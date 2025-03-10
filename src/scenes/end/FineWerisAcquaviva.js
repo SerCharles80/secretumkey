@@ -9,7 +9,7 @@ export class FineWerisAcquaviva extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('saluto', 'assets/wherisacquaviva/esultanza-post-livello.png');
+        this.load.image('saluto', 'assets/wherisacquaviva/esultanza-wherise.png');
     }
 
     create(data) {

@@ -9,7 +9,7 @@ export class FineSweetPeach extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('salutoSweet', 'assets/sweetpeach/schermata-finale-sweetpeach.png');
+        this.load.image('salutoSweet', 'assets/sweetpeach/esultanza-sweetpeach.png');
     }
 
     create(data) {

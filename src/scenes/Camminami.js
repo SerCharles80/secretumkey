@@ -16,8 +16,8 @@ export class Camminami extends Phaser.Scene {
         this.checkpoints = [
             {
                 x: 0.1, y: 0.2,
-                question: "Quale ordine fondò il convento?",
-                answers: ["Francescani", "Agostiniani Scalzi", "Benedettini"],
+                question: "Chi era s. Agostino?",
+                answers: ["Filosofo", "Vescovo", "Teologo", "Tutte le precedenti"],
                 correct: 1,
                 icon: 'checkpoint1-img' // Immagine associata al checkpoint
             },
@@ -262,7 +262,7 @@ export class Camminami extends Phaser.Scene {
         ).setOrigin(0).setDepth(10);
         
         const panelWidth = this.cameras.main.width * 0.9;
-        const panelHeight = this.cameras.main.height * 0.5;
+        const panelHeight = this.cameras.main.height * 0.8;
         const panelX = (this.cameras.main.width - panelWidth) / 2;
         const panelY = (this.cameras.main.height - panelHeight) / 2;
         

@@ -17,6 +17,7 @@ export class SweetPeach extends Phaser.Scene {
         this.load.image('cesto', 'assets/sweetpeach/cesto-vimini.png');
         this.load.image('correctFeedback', 'assets/sweetpeach/pesca-esulta.png');
         this.load.image('wrongFeedback', 'assets/sweetpeach/pesca-sbaglia.png');
+        this.load.image('pavimento', 'assets/sweetpeach/pavimento-rid.png');
 
         // Carico gli ingredienti
         this.load.image('500g di farina', 'assets/sweetpeach/farina.png');
@@ -34,6 +35,12 @@ export class SweetPeach extends Phaser.Scene {
         // tracciamo il tempo di gioco
         this.startTime = this.time.now;
 
+        // Aggiungi l'immagine "pavimento" come sfondo
+        const bg = this.add.image(0, 0, 'pavimento').setOrigin(0);
+        bg.displayWidth = this.cameras.main.width;
+        bg.displayHeight = this.cameras.main.height;
+        bg.setDepth(-1);
+
         // Imposta il colore di sfondo
         this.cameras.main.setBackgroundColor('#FFFBF5');
 
@@ -44,11 +51,17 @@ export class SweetPeach extends Phaser.Scene {
         // Posiziona la credenza in modo fisso
         this.credenza = this.add.image(fixedCenterX, fixedCenterY - 100, 'credenza').setOrigin(0.5);
         
-        // Posiziona il cesto in basso
-        this.cesto = this.add.image(fixedCenterX, 550, 'cesto').setOrigin(0.5).setScale(1);
+        // Posiziona il cesto in basso usando la dimensione dinamica della camera
+        this.cesto = this.add.image(
+            fixedCenterX, 
+            this.cameras.main.height - 70,  // 50px di margine dal fondo
+            'cesto'
+        ).setOrigin(0.5).setScale(0.9); // Ridotto del 10%
+
+        // Definisci la zona di fermata del cesto in base alla nuova posizione Y
         this.cesto.zoneDiFermata = new Phaser.Geom.Rectangle(
             fixedCenterX - 50,
-            550 - 80,
+            this.cameras.main.height - 50 - 110,  // 110px sopra il fondo (riguardo all'altezza del cesto)
             100,
             60
         );
@@ -106,7 +119,7 @@ export class SweetPeach extends Phaser.Scene {
 
         const text = this.add.text(
             this.cameras.main.centerX, 
-            this.cameras.main.centerY - 60, 
+            this.cameras.main.centerY - 70, 
             `Vuoi aggiungere ${ingredientData.key}?`, 
             {
             fontFamily: 'Poppins',
@@ -145,7 +158,7 @@ export class SweetPeach extends Phaser.Scene {
             this.tweens.add({
                 targets: ingredient,
                 x: this.cesto.x,
-                y: this.cesto.y - 30,
+                y: Math.min(this.cesto.y - 30, this.cameras.main.height - 350),
                 scaleX: ingredient.scale * 1.2,
                 scaleY: ingredient.scale * 1.2,
                 duration: 500,

@@ -23,6 +23,12 @@ import { FineCamminami } from './scenes/end/FineCamminami';
 import { FortezzaGostIntro } from './scenes/intro/FortezzaGostIntro';
 import { FortezzaGost } from './scenes/FortezzaGost';
 import { FineFortezzaGost } from './scenes/end/FineFortezzaGost';
+import { DecoPuzzleIntro } from './scenes/intro/DecoPuzzleIntro';
+import { DecoPuzzle } from './scenes/DecoPuzzle';
+import { FineDecoPuzzle } from './scenes/end/FineDecoPuzzle';
+import { SciaboloneIntro } from './scenes/intro/SciaboloneIntro';
+import { Sciabolone } from './scenes/Sciabolone';
+import { FineSciabolone } from './scenes/end/FineSciabolone';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -48,21 +54,28 @@ window.onload = function () {
             // FlagPuzzleIntro,
             // FlagPuzzle,
             // FineFlagPuzzle,
-            // PietaIntro,
-            // PietaSegreta,
-            // // FinePietaSegreta,
             // IcomuneIntro,
             // Icomune,
             // FineIcomune,
+            // DecoPuzzleIntro,
+            // DecoPuzzle,
+            // FineDecoPuzzle,
+            CamminamiIntro,
+            Camminami,
+            FineCamminami,
             // SponsaliaDecoIntro,
             // SponsaliaDeco,
             // FineSponsaliaDeco,
-            // CamminamiIntro,
-            // Camminami,
-            // FineCamminami,
-            FortezzaGostIntro,
-            FortezzaGost,
-            FineFortezzaGost
+            // PietaIntro,
+            // PietaSegreta,
+            // FinePietaSegreta,
+            // FortezzaGostIntro,
+            // FortezzaGost,
+            // FineFortezzaGost,
+            // SciaboloneIntro,
+            // Sciabolone,
+            // FineSciabolone
+
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext

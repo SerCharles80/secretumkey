@@ -6,26 +6,6 @@ const SlidingPuzzle = {
     TWEENING: 1
 };
 
-/**
- * Template per il gioco del puzzle scorrevole
- * ----------------------------
- *
- * Questo è il classico gioco del puzzle scorrevole. A differenza di molte implementazioni là fuori,
- * non usiamo un layout iniziale 'casuale', altrimenti il puzzle sarà irrisolvibile
- * il 50% delle volte. Invece usiamo una funzione di camminata del puzzle. Questo ti permette di vedere
- * il puzzle prima, e poi viene tutto mescolato, pronto per essere risolto.
- *
- * Puoi controllare il numero di iterazioni, o passi, che il camminatore esegue.
- * Puoi ovviamente fornire qualsiasi immagine desideri al puzzle, e si adatterà e ridimensionerà
- * senza cambiare molto.
- *
- * In questo esempio ci sono 3 immagini, e man mano che le risolvi, il camminatore
- * aumenta in complessità ogni volta, rendendo più difficile risolverlo.
- *
- * Questo sito web ha alcuni suggerimenti creativi per risolvere i puzzle scorrevoli:
- * http://www.nordinho.net/vbull/blogs/lunanik/6131-slider-puzzles-solved-once-all.html
- */
-
 export class FlagPuzzle extends Phaser.Scene
 {
     constructor ()
@@ -92,6 +72,20 @@ export class FlagPuzzle extends Phaser.Scene
         window.solve = () => {
             this.nextRound();
         };
+
+        // Aggiungi il titolo per la prima immagine
+    this.titleText = this.add.text(
+        this.cameras.main.centerX,
+        80, // Posizione Y dall'alto
+        'Bandiera Verde dell\'Agricoltura',
+        {
+            fontFamily: 'Poppins',
+            fontSize: '24px',
+            color: '#000000',
+            align: 'center',
+            wordWrap: { width: this.cameras.main.width * 0.8 }
+        }
+    ).setOrigin(0.5);
 
         // Mostra l'immagine intera del puzzle
         this.fullImage = this.add.image(
@@ -481,6 +475,38 @@ export class FlagPuzzle extends Phaser.Scene
             nextPhoto = 'pic3';  // Assicurati che 'pic3' sia stato caricato in preload()
             size = 3;            // Dimensione della griglia: 3x3 (o altra se preferisci)
             iterations = 6;
+        }
+
+        let title;
+        if (this.currentRound === 2) {
+            nextPhoto = 'pic2';
+            size = 3;
+            iterations = 6;
+            title = 'Bandiera Arancione per il Borgo Storico';
+        }
+        else if (this.currentRound === 3) {
+            nextPhoto = 'pic3';
+            size = 3;
+            iterations = 6;
+            title = 'I riconoscimenti di Acquaviva Picena';
+        }
+    
+        // Aggiorna il testo del titolo
+        if (this.titleText) {
+            this.titleText.setText(title);
+        } else {
+            this.titleText = this.add.text(
+                this.cameras.main.centerX,
+                80,
+                title,
+                {
+                    fontFamily: 'Poppins',
+                    fontSize: '24px',
+                    color: '#000000',
+                    align: 'center',
+                    wordWrap: { width: this.cameras.main.width * 0.8 }
+                }
+            ).setOrigin(0.5);
         }
     
         // Mostra l'immagine completa per permettere al giocatore di memorizzarla

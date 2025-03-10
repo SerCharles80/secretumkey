@@ -28,7 +28,7 @@ export class FortezzaGost extends Phaser.Scene {
         
         // Imposta nuove dimensioni con padding di 20px sopra e sotto
         const panelPadding = 20;
-        const basePanelHeight = 150;
+        const basePanelHeight = 160;
         const panelHeight = basePanelHeight + panelPadding * 2;  // 150 + 40 = 190
         const panelWidth = this.cameras.main.width * 0.8;
         const panelX = (this.cameras.main.width - panelWidth) / 2;
@@ -48,7 +48,7 @@ export class FortezzaGost extends Phaser.Scene {
             "Dopo il fattaccio, il fantasma del capitano delle armi si aggira ancora nella fortezza, si dice che per farlo tornare nella tomba bisogna toccarlo 10 volte..",
             {
                 fontFamily: 'Poppins',
-                fontSize: '20px',
+                fontSize: '18px',
                 color: '#000000',
                 align: 'center',
                 wordWrap: { width: panelWidth * 0.8 }

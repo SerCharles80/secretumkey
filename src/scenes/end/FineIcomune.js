@@ -9,7 +9,7 @@ export class FineIcomune extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('saluto', 'assets/icomune/esultanza-post-livello-ipalazzo.png');
+        this.load.image('saluto', 'assets/icomune/esultanza-icomume.png');
     }
 
     create(data) {
@@ -62,7 +62,7 @@ export class FineIcomune extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('WelcomeScreen')
+            () => this.scene.start('DecoPuzzleIntro')
         );
     }
 

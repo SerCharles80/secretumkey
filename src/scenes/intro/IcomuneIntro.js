@@ -8,7 +8,7 @@ export class IcomuneIntro extends Phaser.Scene {
 
     preload() {
         //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/icomune/icomune-intro.png');
+        this.load.image('icomuneIntro', 'assets/icomune/spiegazione-icomune.png');
     }
 
     create() {

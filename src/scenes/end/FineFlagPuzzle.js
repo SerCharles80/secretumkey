@@ -8,7 +8,7 @@ export class FineFlagPuzzle extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('salutoFlag', 'assets/flagpuzzle/esultanza-post-puzzle.png');
+        this.load.image('salutoFlag', 'assets/flagpuzzle/esultanza-flugpuzle.png');
     }
 
     create(data) {
@@ -62,7 +62,7 @@ export class FineFlagPuzzle extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('PietaIntro')
+            () => this.scene.start('IcomuneIntro')
         );
     }
 

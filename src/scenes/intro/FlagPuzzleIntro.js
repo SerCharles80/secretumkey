@@ -9,7 +9,7 @@ export class FlagPuzzleIntro extends Phaser.Scene {
     preload() {
         // Carica l'immagine delle istruzioni per Flag Puzzle.
         // Assicurati che il file esista nel percorso indicato.
-        this.load.image('flagpuzleintro', 'assets/flagpuzzle/ingresso-flug-puzzle.png');
+        this.load.image('flagpuzleintro', 'assets/flagpuzzle/spiegazione-flagpuzzle.png');
     }
 
     create() {

@@ -63,8 +63,8 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "image", value: "peru"}
                 ], 
                 correct: 2 
-            }
-            /*{ 
+            },
+            { 
                 question: "E lo stemma del Comune?", 
                 answers: [
                     {type: "image", value: "ter"},
@@ -76,18 +76,18 @@ export class WherisAcquaviva extends Phaser.Scene {
                 ], 
                 correct: 1 
             },
-            {
-                question: "Qual è la Diocesi di appartenenza", 
-                answers: [
-                    {type: "text", value:"Fermo"}, 
-                    {type: "text", value:"Macerata"}, 
-                    {type: "text", value:"Teramo"}, 
-                    {type: "text", value:"Ascoli"},
-                    {type: "text", value:"Roma"},
-                    {type: "text", value:"Milano"}
-                ], 
-                correct: 1 
-            },
+            // {
+            //     question: "Qual è la Diocesi di appartenenza", 
+            //     answers: [
+            //         {type: "text", value:"Fermo"}, 
+            //         {type: "text", value:"Macerata"}, 
+            //         {type: "text", value:"Teramo"}, 
+            //         {type: "text", value:"Ascoli"},
+            //         {type: "text", value:"Roma"},
+            //         {type: "text", value:"Milano"}
+            //     ], 
+            //     correct: 1 
+            // },
             {
                 question: "Qual è il mumero unico per le emergenze?", 
                 answers: [
@@ -106,7 +106,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "text", value:"Tirreno"}, 
                     {type: "text", value:"Ionio"}, 
                     {type: "text", value:"Laguna di Venezia"}, 
-                    {type: "text", value:"Mar di Acquaviva"},
+                    {type: "text", value:"Adriatico"},
                     {type: "text", value:"Laguna Dalmata"}
                 ], 
                 correct: 3 
@@ -115,11 +115,11 @@ export class WherisAcquaviva extends Phaser.Scene {
                 question: "Le montagne a ovest si chiamano?", 
                 answers: [
                     {type: "text", value:"Maiella"}, 
-                    {type: "text", value:"Gran Sasso"}, 
-                    {type: "text", value:"Monte Conero"}, 
+                    {type: "text", value:"Gran\nSasso"}, 
+                    {type: "text", value:"Monte\nConero"}, 
                     {type: "text", value:"Sibillini"},
-                    {type: "text", value:"Monti Nebbiosi"},
-                    {type: "text", value:"Monte Olimpo"}
+                    {type: "text", value:"Monti\nNebbiosi"},
+                    {type: "text", value:"Monte\nOlimpo"}
                 ], 
                 correct: 3 
             },
@@ -127,10 +127,10 @@ export class WherisAcquaviva extends Phaser.Scene {
                 question: "La vetta più alta dei sibillini?", 
                 answers: [
                     {type: "text", value:"Sibilla"}, 
-                    {type: "text", value:"Picco del Sole"}, 
+                    {type: "text", value:"Picco\ndel Sole"}, 
                     {type: "text", value:"Vettore"}, 
-                    {type: "text", value:"Gran Sasso"},
-                    {type: "text", value:"Monte Bove"}
+                    {type: "text", value:"Gran\nSasso"},
+                    {type: "text", value:"Monte\nBove"}
                 ], 
                 correct: 2 
             },
@@ -141,54 +141,21 @@ export class WherisAcquaviva extends Phaser.Scene {
                     {type: "text", value:"Fiastra"}, 
                     {type: "text", value:"Sibillini"}, 
                     {type: "text", value:"Sentina"},
-                    {type: "text", value:"Colli del Vino"},
-                    {type: "text", value:"Via dell'Olio"}
+                    {type: "text", value:"Colli\ndel Vino"},
+                    {type: "text", value:"Via\ndell'Olio"}
                 ], 
                 correct: 3 
-            },
-            {
-                question: "Due parchi nazionali vicini?", 
-                answers: [
-                    {type: "text", value:"Sibillini Sentina"}, 
-                    {type: "text", value:"Sibillini Gran Sasso Laga"}, 
-                    {type: "text", value:"Gran Sasso Laga Monte Conero"}, 
-                    {type: "text", value:"Sibillni Maiella"},
-                    {type: "text", value:"Sibillini Monte Conero"}
-                ], 
-                correct: 4 
             },
             {
                 question: "Acquaviva Picena confina con Ascoli Piceno?", 
                 answers: [
                     {type: "text", value:"Si"}, 
                     {type: "text", value:"No"}, 
-                    {type: "text", value:"A giorni Alterni"}
+                    {type: "text", value:"Forse"},
+                    {type: "text", value:"A giorni\nAlterni"}
                 ], 
                 correct: 1 
-            },
-            {
-                question: "I colori dello stemma del comune sono?", 
-                answers: [
-                    {type: "text", value:"Giallo e Rosso"}, 
-                    {type: "text", value:"Giallo e Nero"}, 
-                    {type: "text", value:"Giallo e Blu"},
-                    {type: "text", value:"Rosso e Blu"}
-                ], 
-                correct: 2 
-            },
-            {
-                question: "Il fiume più grande vicino si chiama?", 
-                answers: [
-                    {type: "text", value:"Tronto"}, 
-                    {type: "text", value:"Tevere"}, 
-                    {type: "text", value:"Chienti"},
-                    {type: "text", value:"Po"},
-                    {type: "text", value:"Misa"},
-                    {type: "text", value:"Acquaviva"}
-                ], 
-                correct: 0 
-            }*/
-
+            }
         ];
         this.currentQuestionIndex = 0;
         this.balloons = [];
@@ -332,13 +299,18 @@ export class WherisAcquaviva extends Phaser.Scene {
                 
                 const maxWidth = this.cameras.main.width * 0.85;
                 const question = this.questions[this.currentQuestionIndex];
-                this.questionText = this.add.text(this.cameras.main.centerX, this.cameras.main.height - 50, question.question, {
-                    fontFamily: 'Poppins',
-                    fontSize: '28px',
-                    color: '#000000',
-                    align: 'center',
-                    wordWrap: { width: maxWidth, useAdvancedWrap: true }
-                }).setOrigin(0.5);
+                this.questionText = this.add.text(
+                    this.cameras.main.centerX,
+                    this.cameras.main.height - 70, // 50px di distanza dal fondo
+                    question.question,
+                    {
+                         fontFamily: 'Poppins',
+                         fontSize: '22px',
+                         color: '#000000',
+                         align: 'center',
+                         wordWrap: { width: maxWidth, useAdvancedWrap: true }
+                    }
+                ).setOrigin(0.5);
             
                 this.answerElements = []; // Reset dell'array prima di creare nuove risposte
             
@@ -395,7 +367,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                             align: 'center', // Assicura l'allineamento centrale
                             wordWrap: { width: 120, useAdvancedWrap: true }
                         }).setOrigin(0.5)
-                        .setLineSpacing(5);
+                        .setLineSpacing(2); // riduce il line spacing da 5 a 2
                     }
             
                     // Aggiungiamo entrambi gli elementi all'array

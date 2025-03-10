@@ -8,7 +8,7 @@ export class CamminamiIntro extends Phaser.Scene {
 
     preload() {
         //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/camminami/spiegazione-gioco-camminami-intro.png');
+        this.load.image('icomuneIntro', 'assets/camminami/spiegazione-gioco-camminami.png');
     }
 
     create() {
