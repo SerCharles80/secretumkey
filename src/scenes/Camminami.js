@@ -17,42 +17,42 @@ export class Camminami extends Phaser.Scene {
             {
                 x: 0.1, y: 0.2,
                 question: "Chi era s. Agostino?",
-                answers: ["Filosofo", "Vescovo", "Teologo", "Tutte le precedenti"],
-                correct: 1,
+                answers: ["Filosofo", "Vescovo", "Teologo", "Santo", "Tutte le precedenti"],
+                correct: 4,
                 icon: 'checkpoint1-img' // Immagine associata al checkpoint
             },
             {
                 x: 0.3, y: 0.4,
-                question: "Quale è il dolce tipico di Acquaviva?",
-                answers: ["Pizza di Pasqua", "Frustingo", "Ciambellone"],
-                correct: 1,
+                question: "E’ stato lui a fondare l’ordine degli agostiniani?",
+                answers: ["No", "Si", "Non ho capito"],
+                correct: 0,
                 image: 'checkpoint2-img' // Immagine associata al checkpoint
             },
             {
                 x: 0.5, y: 0.3,
-                question: "Chi ha interpretato San Giacomo?",
-                answers: ["Flavio Insinna", "Lando Buzzanca", "Gigi Proietti"],
-                correct: 0,
+                question: "Dove nascono gli Agostiniani Scalzi?",
+                answers: ["Milano", "Trento", "Ancona", "Venezia", "Napoli"],
+                correct: 4,
                 image: 'checkpoint3-img' // Immagine associata al checkpoint
             },
             {
                 x: 0.7, y: 0.6,
-                question: "Chi ha progettato il monumento ai caduti?",
-                answers: ["Nazareno Stucchi", "Augusto Vagnarelli", "Ubaldo Ferretti"],
-                correct: 0,
+                question: "Quando nascono gli agostiniani Scalzi?",
+                answers: ["493", "993", "1593", "1693", "1993"],
+                correct: 2,
                 image: 'checkpoint4-img' // Immagine associata al checkpoint
             },
             {
                 x: 0.9, y: 0.2,
-                question: "Come si chiama la fortezza?",
-                answers: ["Rocca Primaria", "Rocca Montevarmine", "Fortezza Acquaviva"],
+                question: "Quando arrivano ad Acquaviva Picena?",
+                answers: ["1512", "1612", "1712","112"],
                 correct: 1,
                 image: 'checkpoint5-img' // Immagine associata al checkpoint
             },
             {
                 x: 0.5, y: 0.8,
-                question: "Chi ha donato l'organo alla chiesa?",
-                answers: ["Papa Re Leone", "Papa Sisto V", "Papa Wojtyla"],
+                question: "Come si chiama la chiesa da loro fondata?",
+                answers: ["S.Rocco", "S.Lorenzo", "S.Niccolò", "S.Agostino"],
                 correct: 1,
                 image: 'checkpoint6-img' // Immagine associata al checkpoint
             }
@@ -107,7 +107,7 @@ export class Camminami extends Phaser.Scene {
         const text = this.add.text(
             this.cameras.main.centerX,
             panelY + panelHeight / 2,
-            "Aiuta frate Maronno con le risposte esatte per accelerare il suo difficile cammino degli agostiniani scalzi",
+            "Aiuta Padre Agostino con le risposte esatte per accelerare il suo cammino degli agostiniani scalzi",
             {
                 fontFamily: 'Poppins',
                 fontSize: '20px',
