@@ -315,7 +315,7 @@ export class SponsaliaDeco extends Phaser.Scene {
         const finalTime = this.time.now - this.startTime;
         this.isPlaying = false;
         this.time.delayedCall(1000, () => {
-            this.scene.start('FineSweetPeach', {
+            this.scene.start('FineSponsaliaDeco', {
                 score: this.score,
                 time: finalTime
             });

@@ -46,7 +46,7 @@ export class IcomuneIntro extends Phaser.Scene {
         instructionsImage.setScale(scale);
 
         // Crea il pulsante "Continua" nella parte inferiore della schermata.
-        // Quando il pulsante viene premuto, la scena passa a quella del gioco Flagpuzzle.
+        // Quando il pulsante viene premuto, la scena passa a quella del gioco Flagpuzz Icomune.
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
@@ -54,7 +54,7 @@ export class IcomuneIntro extends Phaser.Scene {
             'Continua',
             () => {
                 console.log("Pulsante Continua premuto!");
-                this.scene.start('Icomune'); // Avvia la scena del gioco FlagPuzzle
+                this.scene.start('Icomune'); // Avvia la scena del gioco Icomune
             }
         );
     }

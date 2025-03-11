@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { createPrimaryButton } from '../../utilita/bottonepri.js';
-import { GameState } from '../../stato/GameState.js';  // Ensure GameState is imported
+import { GameState } from '../../stato/GameState.js';
 
 export class FineSweetPeach extends Phaser.Scene {
     constructor() {
@@ -13,35 +13,38 @@ export class FineSweetPeach extends Phaser.Scene {
     }
 
     create(data) {
-        // Aggiorna il punteggio totale in GameState (che gestirà l'update del div HTML)
-        GameState.addScore(data.score);
-
-        // Imposta lo sfondo e applica il fade in
+        // Calcola il tempo e il punteggio finale, sottraendo 1 punto per secondo trascorso
+        const timeInSeconds = Math.floor(data.time / 1000);
+        const finalScore = data.score - timeInSeconds;
+        
+        GameState.addScore(finalScore);
+        
         this.cameras.main.setBackgroundColor('#FFFBF5');
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
-        // Aggiungi l'immagine di saluto e adatta allo schermo
-        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'salutoSweet')
-            .setOrigin(0.5, 0);
+        // Aggiungi l'immagine di saluto centrata in alto
+        const salutoImage = this.add.image(
+            this.cameras.main.centerX, 
+            this.cameras.main.height * 0.1, 
+            'salutoSweet'
+        ).setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
         const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
-        const scale = Math.min(scaleX, scaleY);
-        salutoImage.setScale(scale);
-
-        // Mostra solo il punteggio di questo livello
+        salutoImage.setScale(Math.min(scaleX, scaleY));
+                
+        // Mostra il punteggio di livello
         const scoreText = this.add.text(
             this.cameras.main.centerX,
             salutoImage.y + salutoImage.displayHeight + 20,
-            `Punteggio livello: ${data.score}`, {
+            `Punteggio livello: ${finalScore}`, {
                 fontFamily: 'Poppins',
                 fontSize: '28px',
                 color: '#343434',
-                fontWeight: 'bold',
-                // wordWrap: { width: this.cameras.main.width * 0.9 } 
+                fontWeight: 'bold'
             }
         ).setOrigin(0.5);
 
-        // Mostra il tempo impiegato
+        // Mostra il tempo di gioco utilizzando formatTime()
         const timeText = this.add.text(
             this.cameras.main.centerX, 
             scoreText.y + 40,
@@ -53,7 +56,7 @@ export class FineSweetPeach extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        // Pulsante per proseguire al prossimo livello
+        // Pulsante "Prossimo Livello"
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,

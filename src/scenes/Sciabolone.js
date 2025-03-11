@@ -50,7 +50,7 @@ export class Sciabolone extends Phaser.Scene {
         this.instructionText = this.add.text(
             this.cameras.main.centerX,
             textY,
-            "L'esercito francese è rintanato nella fortezza. Il coraggioso Giuseppe Costantini, detto Sciabolone, è l'unico che può sconfiggerli.\n Mettiti nei suo panni e elimina tutti i soldati dalla rocca!",
+            "L'esercito francese è rintanato nella fortezza. Il coraggioso Giuseppe Costantini, detto Sciabolone, è l'unico che può sconfiggerli.\n Aiutalo ad eliminare tutti i soldati dalla rocca!",
             {
                 fontFamily: 'Poppins',
                 fontSize: '18px',

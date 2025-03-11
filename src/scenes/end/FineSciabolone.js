@@ -9,7 +9,7 @@ export class FineSciabolone extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('saluto', 'assets/sciabolone/chiusura-gioco-sciabolone.png');
+        this.load.image('salutoSciabolone', 'assets/sciabolone/fine-sciabolone.png');
     }
 
     create(data) {
@@ -25,7 +25,7 @@ export class FineSciabolone extends Phaser.Scene {
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
         // Mostra l'immagine di saluto
-        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'saluto')
+        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'salutoSciabolone')
             .setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
         const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;

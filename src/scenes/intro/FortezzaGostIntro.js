@@ -8,7 +8,7 @@ export class FortezzaGostIntro extends Phaser.Scene {
 
     preload() {
         //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/fortezzagost/spiegazione-gioco-fantasma.png');
+        this.load.image('fortezzaIntro', 'assets/fortezzagost/intro-fortezzaghost.png');
     }
 
     create() {
@@ -36,7 +36,7 @@ export class FortezzaGostIntro extends Phaser.Scene {
         const instructionsImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.25,
-            'icomuneIntro'
+            'fortezzaIntro'
         ).setOrigin(0.5, 0);
 
         // Ridimensiona l'immagine per adattarla alla larghezza della scena

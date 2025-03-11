@@ -8,7 +8,7 @@ export class DecoPuzzleIntro extends Phaser.Scene {
 
     preload() {
         //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/decopuzzle/de-co-intro.png');
+        this.load.image('introDeco', 'assets/decopuzzle/de-co-intro.png');
     }
 
     create() {
@@ -36,7 +36,7 @@ export class DecoPuzzleIntro extends Phaser.Scene {
         const instructionsImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.25,
-            'icomuneIntro'
+            'introDeco'
         ).setOrigin(0.5, 0);
 
         // Ridimensiona l'immagine per adattarla alla larghezza della scena
@@ -46,7 +46,7 @@ export class DecoPuzzleIntro extends Phaser.Scene {
         instructionsImage.setScale(scale);
 
         // Crea il pulsante "Continua" nella parte inferiore della schermata.
-        // Quando il pulsante viene premuto, la scena passa a quella del gioco Flagpuzzle.
+        // Quando il pulsante viene premuto, la scena passa a quella del gioco Decopuzzle.
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
@@ -54,7 +54,7 @@ export class DecoPuzzleIntro extends Phaser.Scene {
             'Continua',
             () => {
                 console.log("Pulsante Continua premuto!");
-                this.scene.start('DecoPuzzle'); // Avvia la scena del gioco FlagPuzzle
+                this.scene.start('DecoPuzzle'); // Avvia la scena del gioco Decopuzzle
             }
         );
     }

@@ -9,7 +9,7 @@ export class PietaIntro extends Phaser.Scene {
     preload() {
         // Carica l'immagine delle istruzioni per Flag Puzzle.
         // Assicurati che il file esista nel percorso indicato.
-        this.load.image('pietasegreta', 'assets/pietasegreta/spiegazione-gioco-pieta.png');
+        this.load.image('pietasegreta', 'assets/pietasegreta/intro-pietasegreta.png');
     }
 
     create() {

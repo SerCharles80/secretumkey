@@ -8,7 +8,7 @@ export class SciaboloneIntro extends Phaser.Scene {
 
     preload() {
         //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/sciabolone/spiegazione-gioco-sciabolone.png');
+        this.load.image('sciaboloneIntro', 'assets/sciabolone/intro-sciabolone.png');
     }
 
     create() {
@@ -36,7 +36,7 @@ export class SciaboloneIntro extends Phaser.Scene {
         const instructionsImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.25,
-            'icomuneIntro'
+            'sciaboloneIntro'
         ).setOrigin(0.5, 0);
 
         // Ridimensiona l'immagine per adattarla alla larghezza della scena

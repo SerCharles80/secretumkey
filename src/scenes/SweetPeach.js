@@ -32,41 +32,37 @@ export class SweetPeach extends Phaser.Scene {
     }
 
     create() {  
-        // tracciamo il tempo di gioco
+        // Traccia il tempo di gioco
         this.startTime = this.time.now;
-
-        // Aggiungi l'immagine "pavimento" come sfondo
+        
+        // Sfondo pavimento
         const bg = this.add.image(0, 0, 'pavimento').setOrigin(0);
         bg.displayWidth = this.cameras.main.width;
         bg.displayHeight = this.cameras.main.height;
         bg.setDepth(-1);
-
-        // Imposta il colore di sfondo
         this.cameras.main.setBackgroundColor('#FFFBF5');
-
-        // Definisci posizioni fisse in base alle dimensioni iniziali (non cambiano in seguito)
-        const fixedCenterX = 195;   // Per esempio, se lo schermo è 800px
-        const fixedCenterY = 340;   // Se lo schermo è 600px
-
-        // Posiziona la credenza in modo fisso
+        
+        // Posizioni fisse per elementi; ad es. numeri in base a valori costanti
+        const fixedCenterX = 195;
+        const fixedCenterY = 340;
+        
+        // Posiziona la credenza
         this.credenza = this.add.image(fixedCenterX, fixedCenterY - 100, 'credenza').setOrigin(0.5);
         
-        // Posiziona il cesto in basso usando la dimensione dinamica della camera
+        // Posiziona il cesto e definisci la sua zona di fermata
         this.cesto = this.add.image(
             fixedCenterX, 
-            this.cameras.main.height - 70,  // 50px di margine dal fondo
+            this.cameras.main.height - 70,
             'cesto'
-        ).setOrigin(0.5).setScale(0.9); // Ridotto del 10%
-
-        // Definisci la zona di fermata del cesto in base alla nuova posizione Y
+        ).setOrigin(0.5).setScale(0.9);
         this.cesto.zoneDiFermata = new Phaser.Geom.Rectangle(
             fixedCenterX - 50,
-            this.cameras.main.height - 50 - 110,  // 110px sopra il fondo (riguardo all'altezza del cesto)
+            this.cameras.main.height - 50 - 110,
             100,
             60
         );
-
-        // Definizione degli ingredienti con posizioni fisse
+        
+        // Crea gli ingredienti in posizioni fisse
         this.ingredients = [
             { key: '500g di farina', x: 80, y: 97, isCorrect: true, scale: 0.5 },
             { key: '200g di zucchero', x: 150, y: 90, isCorrect: true, scale: 0.5 },
@@ -78,8 +74,7 @@ export class SweetPeach extends Phaser.Scene {
             { key: 'tre uova', x: 260, y: 200, isCorrect: true, scale: 0.4 },
             { key: 'bustina di lievito', x: 330, y: 210, isCorrect: true, scale: 0.3 }
         ];
-
-        // Crea gli ingredienti in posizioni fisse
+        
         this.ingredients.forEach(ingredient => {
             ingredient.sprite = this.add.image(ingredient.x, ingredient.y, ingredient.key)
                 .setInteractive()
@@ -91,10 +86,8 @@ export class SweetPeach extends Phaser.Scene {
                 }
             });
         });
-
-        // NON regisatrate alcun listener di resize, in modo che le posizioni restino fisse.
-        // this.scale.on('resize', this.resize, this);  // <- Rimosso
-
+        
+        // Aggiorna il punteggio (se gestito tramite GameState, il commento resta utile)
         this.updateScore();
     }
         
@@ -201,10 +194,12 @@ export class SweetPeach extends Phaser.Scene {
     }
 
     showFeedback(type) {
-        const feedback = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, type).setOrigin(0.5).setScale(0.5);
+        const feedback = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, type)
+            .setOrigin(0.5)
+            .setScale(0.5);
         this.tweens.add({
             targets: feedback,
-            alpha: { from: 1, to: 0 },
+            alpha: { from: 1, to: 0 }, // Corretto: aggiunto il colon dopo 'from'
             duration: 1000,
             onComplete: () => feedback.destroy()
         });

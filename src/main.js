@@ -8,24 +8,24 @@ import { FineSweetPeach } from './scenes/end/FineSweetPeach';
 import { FlagPuzzleIntro } from './scenes/intro/FlagPuzzleIntro';
 import { FlagPuzzle } from './scenes/FlagPuzzle';
 import { FineFlagPuzzle } from './scenes/end/FineFlagPuzzle';
-import { PietaIntro } from './scenes/intro/PietaIntro';
-import { PietaSegreta } from './scenes/PietaSegreta';
-import { FinePietaSegreta } from './scenes/end/FinePietaSegreta';
 import { IcomuneIntro } from './scenes/intro/IcomuneIntro';
 import { Icomune } from './scenes/Icomune';
 import { FineIcomune } from './scenes/end/FineIcomune';
-import { SponsaliaDecoIntro } from './scenes/intro/SponsaliaDecoIntro';
-import { SponsaliaDeco } from './scenes/SponsaliaDeco';
-import { FineSponsaliaDeco } from './scenes/end/FineSponsaliaDeco';
-import { CamminamiIntro } from './scenes/intro/CamminamiIntro';
-import { Camminami } from './scenes/Camminami';
-import { FineCamminami } from './scenes/end/FineCamminami';
-import { FortezzaGostIntro } from './scenes/intro/FortezzaGostIntro';
-import { FortezzaGost } from './scenes/FortezzaGost';
-import { FineFortezzaGost } from './scenes/end/FineFortezzaGost';
 import { DecoPuzzleIntro } from './scenes/intro/DecoPuzzleIntro';
 import { DecoPuzzle } from './scenes/DecoPuzzle';
 import { FineDecoPuzzle } from './scenes/end/FineDecoPuzzle';
+import { CamminamiIntro } from './scenes/intro/CamminamiIntro';
+import { Camminami } from './scenes/Camminami';
+import { FineCamminami } from './scenes/end/FineCamminami';
+import { SponsaliaDecoIntro } from './scenes/intro/SponsaliaDecoIntro';
+import { SponsaliaDeco } from './scenes/SponsaliaDeco';
+import { FineSponsaliaDeco } from './scenes/end/FineSponsaliaDeco';
+import { PietaIntro } from './scenes/intro/PietaIntro';
+import { PietaSegreta } from './scenes/PietaSegreta';
+import { FinePietaSegreta } from './scenes/end/FinePietaSegreta';
+import { FortezzaGostIntro } from './scenes/intro/FortezzaGostIntro';
+import { FortezzaGost } from './scenes/FortezzaGost';
+import { FineFortezzaGost } from './scenes/end/FineFortezzaGost';
 import { SciaboloneIntro } from './scenes/intro/SciaboloneIntro';
 import { Sciabolone } from './scenes/Sciabolone';
 import { FineSciabolone } from './scenes/end/FineSciabolone';
@@ -45,36 +45,36 @@ window.onload = function () {
         parent: 'contenitore-gioco-phaser',
         backgroundColor: '#FFFBF5', // Imposta il colore di sfondo globale qui
         scene: [
-            // WelcomeScreen, 
-            // WherisAcquaviva,
-            // FineWerisAcquaviva,
-            // SweetPeachInstructions,
-            // SweetPeach,             
-            // FineSweetPeach,
-            // FlagPuzzleIntro,
-            // FlagPuzzle,
-            // FineFlagPuzzle,
-            // IcomuneIntro,
-            // Icomune,
-            // FineIcomune,
+            WelcomeScreen, 
+            WherisAcquaviva,
+            FineWerisAcquaviva,
+            SweetPeachInstructions,
+            SweetPeach,             
+            FineSweetPeach,
+            FlagPuzzleIntro,
+            FlagPuzzle,
+            FineFlagPuzzle,
+            IcomuneIntro,
+            Icomune,
+            FineIcomune,
             // DecoPuzzleIntro,
             // DecoPuzzle,
             // FineDecoPuzzle,
-            // CamminamiIntro,
-            // Camminami,
-            // FineCamminami,
-            // SponsaliaDecoIntro,
-             SponsaliaDeco,
-            // FineSponsaliaDeco,
-            // PietaIntro,
-            // PietaSegreta,
-            // FinePietaSegreta,
-            // FortezzaGostIntro,
-            // FortezzaGost,
-            // FineFortezzaGost,
-            // SciaboloneIntro,
-            // Sciabolone,
-            // FineSciabolone
+            CamminamiIntro,
+            Camminami,
+            FineCamminami,
+            SponsaliaDecoIntro,
+            SponsaliaDeco,
+            FineSponsaliaDeco,
+            PietaIntro,
+            PietaSegreta,
+            FinePietaSegreta,
+            FortezzaGostIntro,
+            FortezzaGost,
+            FineFortezzaGost,
+            SciaboloneIntro,
+            Sciabolone,
+            FineSciabolone
 
         ],
         audio: {

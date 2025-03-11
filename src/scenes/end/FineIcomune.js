@@ -9,7 +9,7 @@ export class FineIcomune extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('saluto', 'assets/icomune/esultanza-icomume.png');
+        this.load.image('salutoIcomune', 'assets/icomune/esultanza-icomume.png');
     }
 
     create(data) {
@@ -25,7 +25,7 @@ export class FineIcomune extends Phaser.Scene {
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
         // Mostra l'immagine di saluto
-        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'saluto')
+        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'salutoIcomune')
             .setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
         const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
@@ -62,7 +62,7 @@ export class FineIcomune extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('DecoPuzzleIntro')
+            () => this.scene.start('CamminamiIntro')
         );
     }
 

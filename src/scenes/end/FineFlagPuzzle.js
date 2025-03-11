@@ -8,35 +8,34 @@ export class FineFlagPuzzle extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('salutoFlag', 'assets/flagpuzzle/esultanza-flugpuzle.png');
+        // Carica l'immagine di saluto senza riferimenti audio
+        this.load.image('salutoFlag', 'assets/flagpuzzle/esultanza-flagpuzle.png');
     }
 
     create(data) {
-        // Aggiorna il punteggio totale in GameState (gestirà l'update del div HTML)
-        GameState.addScore(data.score);
-
-        // Imposta lo sfondo
+        const timeInSeconds = Math.floor(data.time / 1000);
+        const finalScore = data.score - timeInSeconds;
+        
+        GameState.addScore(finalScore);
+        
         this.cameras.main.setBackgroundColor('#FFFBF5');
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
-        // Immagine di saluto
+        // Aggiunge l'immagine di saluto centrata in alto
         const salutoImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1,
             'salutoFlag'
         ).setOrigin(0.5, 0);
-
-        // Scala l'immagine
         const scaleX = this.cameras.main.width / salutoImage.width;
-        const scaleY = (this.cameras.main.height * 0.5) / salutoImage.height;
-        const scale = Math.min(scaleX, scaleY);
-        salutoImage.setScale(scale);
-
-        // Mostra il punteggio del livello
+        const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
+        salutoImage.setScale(Math.min(scaleX, scaleY));
+                
+        // Mostra il punteggio di livello
         const scoreText = this.add.text(
             this.cameras.main.centerX,
             salutoImage.y + salutoImage.displayHeight + 20,
-            `Punteggio livello: ${data.score}`, {
+            `Punteggio livello: ${finalScore}`, {
                 fontFamily: 'Poppins',
                 fontSize: '28px',
                 color: '#343434',
@@ -44,9 +43,9 @@ export class FineFlagPuzzle extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        // Mostra il tempo di gioco
+        // Mostra il tempo di gioco formattato
         const timeText = this.add.text(
-            this.cameras.main.centerX,
+            this.cameras.main.centerX, 
             scoreText.y + 40,
             `Tempo di gioco: ${this.formatTime(data.time)}`, {
                 fontFamily: 'Poppins',
@@ -56,12 +55,12 @@ export class FineFlagPuzzle extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-        // Pulsante per proseguire
+        // Pulsante "Prossimo Livello" che passa alla scena introduttiva del livello successivo
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
             timeText.y + 60,
-            'Prossimo Livello',
+            'Prossimo Livello', 
             () => this.scene.start('IcomuneIntro')
         );
     }

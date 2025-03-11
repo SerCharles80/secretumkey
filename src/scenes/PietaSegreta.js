@@ -183,35 +183,6 @@ export class PietaSegreta extends Phaser.Scene {
     handleGameComplete() {
         // Ferma il gioco e registra i dati finali
         this.isPlaying = false;
-        this.input.off('pointermove');
-        this.input.off('pointerdown');
-        this.time.removeAllEvents();
-    
-        const finalTime = this.time.now - this.startTime;
-        const finalScore = this.currentScore;
-    
-        // Mostra il pulsante "Continua" per passare alla scena finale
-        const continueButton = createPrimaryButton(
-            this,
-            this.cameras.main.centerX,
-            this.scoreText.y + 60,
-            'Continua',
-            () => {
-                this.cameras.main.fade(1000, 255, 251, 245);
-                this.time.delayedCall(1000, () => {
-                    this.scene.start('FinePietaSegreta', {
-                        score: finalScore,
-                        time: finalTime
-                    });
-                });
-            }
-        );
-    }
-
-
-    handleGameComplete() {
-        // Ferma il gioco e registra i dati finali
-        this.isPlaying = false;
         this.input.removeAllListeners();
         this.time.removeAllEvents();
 

@@ -9,7 +9,7 @@ export class FinePietaSegreta extends Phaser.Scene {
 
     preload() {
         // Carica l'immagine di saluto
-        this.load.image('finepieta', 'assets/pietasegreta/conclusione-pietasegreta.png');
+        this.load.image('finePieta', 'assets/pietasegreta/fine-pietasegreta.png');
     }
 
     create(data) {
@@ -21,7 +21,7 @@ export class FinePietaSegreta extends Phaser.Scene {
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
         // Aggiungi l'immagine di saluto e adatta allo schermo
-        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'finepieta')
+        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'finePieta')
             .setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
         const scaleY = (this.cameras.main.height * 0.5) / salutoImage.height;

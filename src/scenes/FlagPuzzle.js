@@ -108,6 +108,11 @@ export class FlagPuzzle extends Phaser.Scene
                 this.startTime = this.time.now; // Inizia il timer
             }
         );
+
+        // Aggiungi la deregistrazione di window.solve on shutdown:
+        this.events.on('shutdown', () => {
+            delete window.solve;
+        });
     }
 
     /**
@@ -415,38 +420,30 @@ export class FlagPuzzle extends Phaser.Scene
      */
     tweenOver ()
     {
-        // Tutti i pezzi sono al posto giusto?
-
         let outOfSequence = false;
-
-        this.iterations = 6; // Resetta il numero di iterazioni
-        this.lastMove = null; // Resetta l'ultima mossa
+        this.iterations = 6; // Resetta le iterazioni
+        this.lastMove = null;  // Resetta l'ultima mossa
 
         this.pieces.each(piece => {
-            if (piece.data.values.correctRow !== piece.data.values.row || piece.data.values.correctColumn !== piece.data.values.column)
-            {
+            if (
+                piece.data.values.correctRow !== piece.data.values.row ||
+                piece.data.values.correctColumn !== piece.data.values.column
+            ) {
                 outOfSequence = true;
             }
         });
-
-        if (outOfSequence)
-        {
+        
+        if (outOfSequence) {
             this.action = SlidingPuzzle.ALLOW_CLICK;
-        }
-        else
-        {
-            this.sound.play('win');
-
+        } else {
+            // Utilizza solo transizioni visive (fade, tween) senza chiamate audio
             this.tweens.add({
                 targets: this.spacer,
                 alpha: 1,
                 duration: this.slideSpeed * 2,
                 ease: 'linear',
-                onComplete: () => {
-                    this.nextRound();
-                }
+                onComplete: () => this.nextRound()
             });
-
             this.pieces.each(piece => {
                 piece.setPostPipeline('ShinePostFX');
             });
@@ -548,8 +545,6 @@ export class FlagPuzzle extends Phaser.Scene
             callbackScope: this
         });
     }
-        
-    
 
     calculateScore() {
         // Calcola il tempo trascorso in millisecondi
