@@ -208,7 +208,6 @@ export class WherisAcquaviva extends Phaser.Scene {
         this.load.image('balloon_popped', 'assets/wherisacquaviva/scoppio.png');
         this.load.image('risposta_esatta', 'assets/wherisacquaviva/pesca-esulta.png');
         this.load.image('risposta_sbagliata', 'assets/wherisacquaviva/pesca-sbaglia.png');
-        this.load.image('esulto', 'assets/wherisacquaviva/esultanza-post-livello.png');
     }
 
 
@@ -301,7 +300,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                 const question = this.questions[this.currentQuestionIndex];
                 this.questionText = this.add.text(
                     this.cameras.main.centerX,
-                    this.cameras.main.height - 70, // 50px di distanza dal fondo
+                    50, // 50 pixel dal top
                     question.question,
                     {
                          fontFamily: 'Poppins',
@@ -319,10 +318,9 @@ export class WherisAcquaviva extends Phaser.Scene {
                     let overlap;
                     // Definisci l'area disponibile per il posizionamento (75% dell'altezza)
                     const regionWidth = this.cameras.main.width;
-                    const regionHeight = this.cameras.main.height * 0.75; // 75% dell'altezza disponibile
-                    // Imposta dei margini (modifica questi valori secondo necessità)
+                    const regionHeight = this.cameras.main.height; // Usa l'altezza intera
                     const marginX = 50;
-                    const marginY = 50;
+                    const marginY = this.questionText.y + this.questionText.displayHeight + 50; // inizia subito dopo la domanda
                     //gestione del numero massimo di tentativi de loop
                     let attempts = 0;
                     const maxAttempts = 100; // Aumenta il limite se necessario
@@ -499,5 +497,3 @@ export class WherisAcquaviva extends Phaser.Scene {
     // Remove calculateFinalScore() method
 
 }
-
-

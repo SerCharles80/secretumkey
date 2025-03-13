@@ -29,6 +29,12 @@ import { FineFortezzaGost } from './scenes/end/FineFortezzaGost';
 import { SciaboloneIntro } from './scenes/intro/SciaboloneIntro';
 import { Sciabolone } from './scenes/Sciabolone';
 import { FineSciabolone } from './scenes/end/FineSciabolone';
+import { BonusVinoMemoryIntro } from './scenes/intro/BonusVinoMemoryIntro';
+import { BonusVinoMemory } from './scenes/BonusVinoMemory';
+import { FineBonusVinoMemory } from './scenes/end/FineBonusVinoMemory';
+import { GrattaPajaIntro } from './scenes/intro/GrattaPajaIntro';
+import { GrattaPaja } from './scenes/GrattaPaja';
+import { FineGrattaPaja } from './scenes/end/FineGrattaPaja';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -57,9 +63,9 @@ window.onload = function () {
             IcomuneIntro,
             Icomune,
             FineIcomune,
-            // DecoPuzzleIntro,
-            // DecoPuzzle,
-            // FineDecoPuzzle,
+            DecoPuzzleIntro,
+            DecoPuzzle,
+            FineDecoPuzzle,
             CamminamiIntro,
             Camminami,
             FineCamminami,
@@ -74,8 +80,13 @@ window.onload = function () {
             FineFortezzaGost,
             SciaboloneIntro,
             Sciabolone,
-            FineSciabolone
-
+            FineSciabolone,
+            BonusVinoMemoryIntro,
+            BonusVinoMemory,
+            FineBonusVinoMemory,
+            GrattaPajaIntro,
+            GrattaPaja,
+            FineGrattaPaja
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext

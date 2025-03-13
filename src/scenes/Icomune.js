@@ -284,9 +284,9 @@ export class Icomune extends Phaser.Scene {
                  wordWrap: { width: maxWidth, useAdvancedWrap: true }
             }
         ).setOrigin(0.5);
-        // Calcola i bounds e posiziona il testo in modo che il bordo inferiore sia a 30px dal fondo
+        // Posiziona la domanda in cima, a 50px dal top (considerando anche l'altezza del testo)
         const textBounds = this.questionText.getBounds();
-        this.questionText.y = this.cameras.main.height - 30 - (textBounds.height / 2);
+        this.questionText.y = 50 + (textBounds.height / 2);
     
         this.answerElements = []; // Reset dell'array prima di creare nuove risposte
         

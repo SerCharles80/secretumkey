@@ -10,6 +10,7 @@ export class FortezzaGost extends Phaser.Scene {
         this.ghostDuration = 500; // ms: durata di apparizione del fantasma
         this.isPlaying = false;
         this.startTime = 0;
+        this.catchCountText = null;
     }
 
     preload() {
@@ -79,6 +80,19 @@ export class FortezzaGost extends Phaser.Scene {
         this.isPlaying = true;
         this.catchCount = 0;
         this.score = 0;
+
+        // Aggiungi il contatore
+        this.catchCountText = this.add.text(
+            this.cameras.main.centerX,
+            30,
+            'Tocchi: 0/10',
+            {
+                fontFamily: 'Poppins',
+                fontSize: '25px',
+                color: '#FFFFFF',
+                align: 'center'
+            }
+        ).setOrigin(0.5).setDepth(10);
 
         // Imposta lo sfondo: immagine della rocca adattata alla finestra
         this.bg = this.add.image(0, 0, 'rocca').setOrigin(0).setDepth(-1);
@@ -174,6 +188,7 @@ export class FortezzaGost extends Phaser.Scene {
         if (!this.ghost.visible) return;
         this.score += 500;
         this.catchCount++;
+        this.catchCountText.setText(`Tocchi: ${this.catchCount}/10`);
         this.ghost.setVisible(false);
         if (this.catchCount >= this.requiredCatches) {
             this.endGame();

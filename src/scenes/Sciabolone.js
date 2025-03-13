@@ -12,6 +12,16 @@ export class Sciabolone extends Phaser.Scene {
         this.eliminatedCount = 0;
         // La durata dell'effetto fade per il soldato
         this.fadeDuration = 200;
+
+        // Aggiungi l'array dei titoli di incoraggiamento
+        this.levelTitles = [
+            "Elimina i soldati francesi!",
+            "Sò che puoi farcela!",
+            "Proprio cosi, continua!",
+            "Sono veramente tanti.. forzaaa!",
+            "Sbucano ovunque... Speriamo siano gli ultimi!!!"
+        ];
+        this.levelTitleText = null;
     }
 
     preload() {
@@ -88,6 +98,26 @@ export class Sciabolone extends Phaser.Scene {
 
     spawnSoldiers() {
         this.roundStartTime = this.time.now;
+        
+        // Rimuovi il titolo precedente se esiste
+        if (this.levelTitleText) {
+            this.levelTitleText.destroy();
+        }
+
+        // Aggiungi il nuovo titolo per il livello corrente
+        this.levelTitleText = this.add.text(
+            this.cameras.main.centerX,
+            30,
+            this.levelTitles[this.currentRound - 1],
+            {
+                fontFamily: 'Poppins',
+                fontSize: '20px',
+                color: '#FFFFFF', // Cambiato da '#000000' a '#FFFFFF' per il colore bianco
+                align: 'center',
+                wordWrap: { width: this.cameras.main.width * 0.8 }
+            }
+        ).setOrigin(0.5);
+
         this.eliminatedCount = 0;
         this.soldiers = [];
         const soldierCount = 2 * this.currentRound + 2;

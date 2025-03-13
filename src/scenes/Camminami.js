@@ -107,7 +107,7 @@ export class Camminami extends Phaser.Scene {
         const text = this.add.text(
             this.cameras.main.centerX,
             panelY + panelHeight / 2,
-            "Aiuta Padre Agostino con le risposte esatte per accelerare il suo cammino degli agostiniani scalzi",
+            "Aiuta Padre Agostino, selezionando le risposte esatte il suo cammino sarà degli agostiniani scalzi più veloce!",
             {
                 fontFamily: 'Poppins',
                 fontSize: '20px',
@@ -299,6 +299,8 @@ export class Camminami extends Phaser.Scene {
         });
         
         const uiElements = [overlay, panel, questionText];
+        
+        const buttons = [];
         question.answers.forEach((answer, index) => {
             const button = createPrimaryButton(
                 this,
@@ -306,11 +308,49 @@ export class Camminami extends Phaser.Scene {
                 questionText.y + 100 + (index * 70),
                 answer,
                 () => {
-                    uiElements.forEach(element => element.destroy());
-                    this.handleAnswer(index === question.correct);
+                    // Disabilita tutti i bottoni immediatamente
+                    buttons.forEach(btn => {
+                        btn.disableInteractive();
+                        btn.setAlpha(0.7);
+                    });
+                    
+                    if (index === question.correct) {
+                        // Risposta corretta: colora il bottone di verde
+                        button.setStyle({ backgroundColor: '#00b65b' });
+                        button.setAlpha(1); // Mantieni il bottone corretto completamente visibile
+                        
+                        // Attendi mezzo secondo prima di procedere
+                        this.time.delayedCall(500, () => {
+                            uiElements.forEach(element => element.destroy());
+                            this.handleAnswer(true);
+                        });
+                    } else {
+                        // Risposta sbagliata: colora il bottone di rosso
+                        button.setStyle({ backgroundColor: '#fc1c1c' });
+                        const correctButton = buttons[question.correct];
+                        
+                        // Fai lampeggiare il bottone della risposta corretta di verde
+                        this.tweens.add({
+                            targets: correctButton,
+                            alpha: { from: 0.7, to: 1 },
+                            yoyo: true,
+                            repeat: 2,
+                            duration: 200,
+                            onComplete: () => {
+                                correctButton.setStyle({ backgroundColor: '#00b65b' });
+                                correctButton.setAlpha(1);
+                                // Attendi mezzo secondo prima di procedere
+                                this.time.delayedCall(500, () => {
+                                    uiElements.forEach(element => element.destroy());
+                                    this.handleAnswer(false);
+                                });
+                            }
+                        });
+                    }
                 }
             ).setDepth(11);
             
+            buttons.push(button);
             uiElements.push(button);
         });
     }

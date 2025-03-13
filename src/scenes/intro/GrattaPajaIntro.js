@@ -1,14 +1,15 @@
 import Phaser from 'phaser';
 import { createPrimaryButton } from '../../utilita/bottonepri.js';
 
-export class CamminamiIntro extends Phaser.Scene {
+export class GrattaPajaIntro extends Phaser.Scene {
     constructor() {
-        super({ key: 'CamminamiIntro' }); 
+        super({ key: 'GrattaPajaIntro' }); 
     }
 
     preload() {
-        //carico il file immagine di istruzioni
-        this.load.image('icomuneIntro', 'assets/camminami/spiegazione-gioco-camminami-intro.png');
+        // Carica l'immagine delle istruzioni per Flag Puzzle.
+        // Assicurati che il file esista nel percorso indicato.
+        this.load.image('introGrattapaja', 'assets/grattapaja/spiegazione-gioco-grattapaja.png');
     }
 
     create() {
@@ -19,7 +20,7 @@ export class CamminamiIntro extends Phaser.Scene {
         const titleText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1, // Posizionato al 10% dell'altezza
-            'Camminami',
+            'GrattaPaja',
             {
                 fontFamily: 'Poppins',
                 fontSize: '34px',
@@ -36,7 +37,7 @@ export class CamminamiIntro extends Phaser.Scene {
         const instructionsImage = this.add.image(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.25,
-            'icomuneIntro'
+            'introGrattapaja'
         ).setOrigin(0.5, 0);
 
         // Ridimensiona l'immagine per adattarla alla larghezza della scena
@@ -54,7 +55,7 @@ export class CamminamiIntro extends Phaser.Scene {
             'Continua',
             () => {
                 console.log("Pulsante Continua premuto!");
-                this.scene.start('Camminami'); // Avvia la scena del gioco FlagPuzzle
+                this.scene.start('GrattaPaja'); // Avvia la scena del gioco FlagPuzzle
             }
         );
     }

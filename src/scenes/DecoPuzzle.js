@@ -39,6 +39,7 @@ export class DecoPuzzle extends Phaser.Scene {
 		this.load.image('comuneAcqua', 'assets/decopuzzle/comune-acquaviva.png');
 		
 		// Carica le immagini per i round successivi
+		this.load.image('pic1', 'assets/decopuzzle/stemma-comune.png');
 		this.load.image('pic2', 'assets/decopuzzle/logo-de-co.png'); // Sostituisci con il percorso corretto
 		this.load.image('pic3', 'assets/decopuzzle/comune-acquaviva.png'); // Sostituisci con il percorso corretto
 	}
@@ -113,15 +114,31 @@ export class DecoPuzzle extends Phaser.Scene {
 		let i = 0;
 		for (let y = 0; y < this.columns; y++) {
 			for (let x = 0; x < this.rows; x++) {
-				// Crea la texture dinamica per il pezzo
-				const slice = this.textures.addDynamicTexture(`slice${i}`, pieceWidth, pieceHeight);
+				 // Genera una chiave univoca per ogni texture dinamica
+				const sliceKey = `slice_${this.photo}_${i}_${Date.now()}`;
+				
+				// Rimuovi le vecchie texture se esistono
+				if (this.textures.exists(sliceKey)) {
+					this.textures.remove(sliceKey);
+				}
+
+				const slice = this.textures.addDynamicTexture(sliceKey, pieceWidth, pieceHeight);
 				const ox = x / this.rows;
 				const oy = y / this.columns;
+				
 				slice.stamp(key, null, 0, 0, { originX: ox, originY: oy });
 				this.slices.push(slice);
-				const piece = this.add.image(x * pieceWidth, y * pieceHeight, `slice${i}`)
+
+				const piece = this.add.image(x * pieceWidth, y * pieceHeight, sliceKey)
 					.setOrigin(0, 0)
-					.setData({ row: x, column: y, correctRow: x, correctColumn: y });
+					.setData({
+						row: x,
+						column: y,
+						correctRow: x,
+						correctColumn: y,
+						textureKey: sliceKey // Salva la chiave della texture per riferimento futuro
+					});
+
 				piece.setInteractive();
 				piece.on('pointerdown', () => this.checkPiece(piece));
 				this.pieces.add(piece);

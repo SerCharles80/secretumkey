@@ -62,7 +62,7 @@ export class FineIcomune extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('CamminamiIntro')
+            () => this.scene.start('DecoPuzzleIntro')
         );
     }
 

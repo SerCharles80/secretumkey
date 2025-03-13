@@ -1,40 +1,38 @@
 import Phaser from 'phaser';
 import { createPrimaryButton } from '../../utilita/bottonepri.js';
-import { GameState } from '../../stato/GameState.js';
+import { GameState } from '../../stato/GameState.js';  // Ensure GameState is imported
 
-export class FineDecoPuzzle extends Phaser.Scene {
+export class FineGrattaPaja extends Phaser.Scene {
     constructor() {
-        super({ key: 'FineDecoPuzzle' });
+        super({ key: 'FineGrattaPaja' });
     }
 
     preload() {
-        // Carica l'immagine di saluto, senza riferimenti a suoni
-        this.load.image('salutoDeco', 'assets/decopuzzle/finale-deco-puzzle.png');
+        // Carica l'immagine di saluto
+        this.load.image('fineGratta', 'assets/grattapaja/chiusura-gioco-grattapaja.png');
     }
 
     create(data) {
-        const timeInSeconds = Math.floor(data.time / 1000);
-        const finalScore = data.score - timeInSeconds;
-        
-        GameState.addScore(finalScore);
-        
+        // Aggiorna il punteggio totale in GameState (che gestirà l'update del div HTML)
+        GameState.addScore(data.score);
+
+        // Imposta lo sfondo e applica il fade in
         this.cameras.main.setBackgroundColor('#FFFBF5');
         this.cameras.main.fadeIn(500, 255, 251, 245);
 
-        const salutoImage = this.add.image(
-            this.cameras.main.centerX,
-            this.cameras.main.height * 0.1,
-            'salutoDeco'
-        ).setOrigin(0.5, 0);
+        // Aggiungi l'immagine di saluto e adatta allo schermo
+        const salutoImage = this.add.image(this.cameras.main.centerX, this.cameras.main.height * 0.1, 'fineGratta')
+            .setOrigin(0.5, 0);
         const scaleX = this.cameras.main.width / salutoImage.width;
-        const scaleY = (this.cameras.main.height * 0.6) / salutoImage.height;
-        salutoImage.setScale(Math.min(scaleX, scaleY));
-                
+        const scaleY = (this.cameras.main.height * 0.5) / salutoImage.height;
+        const scale = Math.min(scaleX, scaleY);
+        salutoImage.setScale(scale);
+
+        // Mostra solo il punteggio di questo livello
         const scoreText = this.add.text(
             this.cameras.main.centerX,
-            salutoImage.y + salutoImage.displayHeight + 20,
-            `Punteggio livello: ${finalScore}`,
-            {
+            salutoImage.y + salutoImage.displayHeight + 40,
+            `Punteggio livello: ${data.score}`, {
                 fontFamily: 'Poppins',
                 fontSize: '28px',
                 color: '#343434',
@@ -42,11 +40,11 @@ export class FineDecoPuzzle extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
+        // Mostra il tempo impiegato
         const timeText = this.add.text(
             this.cameras.main.centerX, 
             scoreText.y + 40,
-            `Tempo di gioco: ${this.formatTime(data.time)}`,
-            {
+            `Tempo di gioco: ${this.formatTime(data.time)}`, {
                 fontFamily: 'Poppins',
                 fontSize: '24px',
                 color: '#343434',
@@ -54,12 +52,13 @@ export class FineDecoPuzzle extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
+        // Pulsante per proseguire al prossimo livello
         const continueButton = createPrimaryButton(
             this,
             this.cameras.main.centerX,
             timeText.y + 60,
-            'Prossimo Livello',
-            () => this.scene.start('CamminamiIntro')
+            'Prossimo Livello', 
+            () => this.scene.start('FortezzaGostIntro')
         );
     }
 

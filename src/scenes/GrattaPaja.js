@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import { createPrimaryButton } from '../utilita/bottonepri.js';
 
-export class PietaSegreta extends Phaser.Scene {
+export class GrattaPaja extends Phaser.Scene {
     constructor() {
-        super({ key: 'PietaSegreta' });
+        super({ key: 'GrattaPaja' });
         this.startTime = 0;
         this.timeLimit = 100000; // 100 secondi in millisecondi
         this.baseScore = 1000;
@@ -18,8 +18,8 @@ export class PietaSegreta extends Phaser.Scene {
         console.log('Preloading images...');
         
         // Carica le immagini con i percorsi corretti
-        this.load.image('pieta', 'assets/pietasegreta/immaginepieta.png');
-        this.load.image('gratta', 'assets/pietasegreta/grigio-gratta.png');
+        this.load.image('pajarola', 'assets/grattapaja/foto-pajarole.png');
+        this.load.image('gratta', 'assets/grattapaja/grigio-gratta.png');
     }
 
     create() {
@@ -34,7 +34,7 @@ export class PietaSegreta extends Phaser.Scene {
         
         
         // Crea l'immagine nascosta (premio)
-        this.hiddenImage = this.add.image(centerX, centerY - 50, 'pieta').setOrigin(0.5);
+        this.hiddenImage = this.add.image(centerX, centerY - 50, 'pajarola').setOrigin(0.5);
         const targetWidth = screenWidth * 0.85;
         const scale = targetWidth / this.hiddenImage.width;
         this.hiddenImage.setScale(scale);
@@ -183,35 +183,6 @@ export class PietaSegreta extends Phaser.Scene {
     handleGameComplete() {
         // Ferma il gioco e registra i dati finali
         this.isPlaying = false;
-        this.input.off('pointermove');
-        this.input.off('pointerdown');
-        this.time.removeAllEvents();
-    
-        const finalTime = this.time.now - this.startTime;
-        const finalScore = this.currentScore;
-    
-        // Mostra il pulsante "Continua" per passare alla scena finale
-        const continueButton = createPrimaryButton(
-            this,
-            this.cameras.main.centerX,
-            this.scoreText.y + 60,
-            'Continua',
-            () => {
-                this.cameras.main.fade(1000, 255, 251, 245);
-                this.time.delayedCall(1000, () => {
-                    this.scene.start('FinePietaSegreta', {
-                        score: finalScore,
-                        time: finalTime
-                    });
-                });
-            }
-        );
-    }
-
-
-    handleGameComplete() {
-        // Ferma il gioco e registra i dati finali
-        this.isPlaying = false;
         this.input.removeAllListeners();
         this.time.removeAllEvents();
 
@@ -227,7 +198,7 @@ export class PietaSegreta extends Phaser.Scene {
             () => {
                 this.cameras.main.fade(1000, 255, 251, 245);
                 this.time.delayedCall(1000, () => {
-                    this.scene.start('FinePietaSegreta', {
+                    this.scene.start('FineGrattaPaja', {
                         score: finalScore,
                         time: finalTime
                     });

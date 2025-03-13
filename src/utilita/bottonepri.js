@@ -1,63 +1,122 @@
-export function createPrimaryButton(scene, x, y, text, callback) {
-    console.log(`Creazione pulsante: ${text} a (${x}, ${y})`);
+export function createPrimaryButton(scene, x, y, text, callback, config = {}) {
+    // Configurazione di default che può essere sovrascritta
+    const buttonConfig = {
+        width: config.width || 200,
+        height: config.height || 50,
+        backgroundColor: config.backgroundColor || 0x00AAFF,
+        borderColor: config.borderColor || 0x343434,
+        borderRadius: config.borderRadius || 25,
+        shadowOffset: config.shadowOffset || 3,
+        fontSize: config.fontSize || '20px',
+        fontColor: config.fontColor || '#ffffff',
+        fontFamily: config.fontFamily || 'Poppins',
+        hasShadow: config.hasShadow !== undefined ? config.hasShadow : true,
+        borderWidth: config.borderWidth || 2
+    };
 
-    const buttonWidth = 200;
-    const buttonHeight = 50;
-    const buttonColor = 0x00AAFF; 
-    const borderColor = 0x343434; 
-    const borderRadius = 25; 
-    const shadowOffset = 3;
+    const container = scene.add.container(0, 0);
 
-    const shadow = scene.add.graphics();
-    shadow.fillStyle(borderColor, 1);
-    shadow.fillRoundedRect(
-        x - buttonWidth / 2, 
-        y - buttonHeight / 2.2 + shadowOffset, 
-        buttonWidth, 
-        buttonHeight, 
-        borderRadius
-    );
+    // Aggiungi l'ombra solo se richiesta
+    if (buttonConfig.hasShadow) {
+        const shadow = scene.add.graphics();
+        shadow.fillStyle(buttonConfig.borderColor, 1);
+        shadow.fillRoundedRect(
+            x - buttonConfig.width / 2,
+            y - buttonConfig.height / 2.2 + buttonConfig.shadowOffset,
+            buttonConfig.width,
+            buttonConfig.height,
+            buttonConfig.borderRadius
+        );
+        container.add(shadow);
+    }
 
+    // Corpo principale del bottone
     const buttonGraphics = scene.add.graphics();
-    buttonGraphics.fillStyle(buttonColor, 1);
+    buttonGraphics.fillStyle(buttonConfig.backgroundColor, 1);
     buttonGraphics.fillRoundedRect(
-        x - buttonWidth / 2, 
-        y - buttonHeight / 2, 
-        buttonWidth, 
-        buttonHeight, 
-        borderRadius
+        x - buttonConfig.width / 2,
+        y - buttonConfig.height / 2,
+        buttonConfig.width,
+        buttonConfig.height,
+        buttonConfig.borderRadius
     );
-    buttonGraphics.lineStyle(2, borderColor, 1);
+    buttonGraphics.lineStyle(buttonConfig.borderWidth, buttonConfig.borderColor, 1);
     buttonGraphics.strokeRoundedRect(
-        x - buttonWidth / 2, 
-        y - buttonHeight / 2, 
-        buttonWidth, 
-        buttonHeight, 
-        borderRadius
+        x - buttonConfig.width / 2,
+        y - buttonConfig.height / 2,
+        buttonConfig.width,
+        buttonConfig.height,
+        buttonConfig.borderRadius
     );
+    container.add(buttonGraphics);
 
+    // Testo del bottone
     const buttonText = scene.add.text(x, y, text, {
-        fontFamily: 'Poppins',
-        fontSize: '20px',
-        color: '#ffffff',
+        fontFamily: buttonConfig.fontFamily,
+        fontSize: buttonConfig.fontSize,
+        color: buttonConfig.fontColor,
         align: 'center'
-    }).setOrigin(0.5, 0.5);
+    }).setOrigin(0.5);
+    container.add(buttonText);
 
-    const buttonHitArea = scene.add.rectangle(x, y, buttonWidth, buttonHeight)
-    .setInteractive({ useHandCursor: true }) // Rende il pulsante interattivo su mobile e desktop
+    // Area cliccabile
+    const buttonHitArea = scene.add.rectangle(
+        x,
+        y,
+        buttonConfig.width,
+        buttonConfig.height
+    )
+    .setInteractive({ useHandCursor: true })
     .setOrigin(0.5);
+    container.add(buttonHitArea);
 
-    // Aggiunge evento per il clic (mouse) e il tocco (touch)
-    buttonHitArea.on('pointerdown', () => {
-        console.log(`Pulsante ${text} premuto!`); // Debug per controllare il touch
-        callback();
-    });
-    
-    
-    // Contenitore che racchiude tutti gli elementi del pulsante
-    const buttonContainer = scene.add.container(0, 0, [shadow, buttonGraphics, buttonText, buttonHitArea]);
-    
-    
-    console.log(`Pulsante ${text} creato!`);
-    return buttonContainer;
+    // Eventi del bottone
+    buttonHitArea.on('pointerdown', callback);
+
+    // Metodi per modificare il bottone dopo la creazione
+    container.setStyle = function(newConfig) {
+        buttonGraphics.clear();
+        
+        // Aggiorna lo sfondo
+        buttonGraphics.fillStyle(newConfig.backgroundColor || buttonConfig.backgroundColor, 1);
+        buttonGraphics.fillRoundedRect(
+            x - buttonConfig.width / 2,
+            y - buttonConfig.height / 2,
+            buttonConfig.width,
+            buttonConfig.height,
+            buttonConfig.borderRadius
+        );
+        
+        // Aggiorna il bordo
+        buttonGraphics.lineStyle(
+            newConfig.borderWidth || buttonConfig.borderWidth,
+            newConfig.borderColor || buttonConfig.borderColor,
+            1
+        );
+        buttonGraphics.strokeRoundedRect(
+            x - buttonConfig.width / 2,
+            y - buttonConfig.height / 2,
+            buttonConfig.width,
+            buttonConfig.height,
+            buttonConfig.borderRadius
+        );
+
+        // Aggiorna il testo se necessario
+        if (newConfig.fontColor) {
+            buttonText.setStyle({ color: newConfig.fontColor });
+        }
+    };
+
+    container.setText = function(newText) {
+        buttonText.setText(newText);
+    };
+
+    container.setInteractive = function(value) {
+        buttonHitArea.removeInteractive();
+        if (value) {
+            buttonHitArea.setInteractive({ useHandCursor: true });
+        }
+    };
+
+    return container;
 }
