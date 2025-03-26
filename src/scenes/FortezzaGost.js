@@ -46,7 +46,7 @@ export class FortezzaGost extends Phaser.Scene {
         this.instructionText = this.add.text(
             this.cameras.main.centerX,
             textY,
-            "Dopo il fattaccio, il fantasma del capitano della guardia inquieto si aggira nella fortezza, per fargli trovare pace bisognerà toccarlo 10 volte..",
+            "Dopo il fattaccio, il fantasma del capitano delle guardie inquieto si aggira nella fortezza, per fargli trovare pace bisognerà toccarlo 10 volte..",
             {
                 fontFamily: 'Poppins',
                 fontSize: '18px',

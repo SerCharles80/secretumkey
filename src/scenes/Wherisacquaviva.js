@@ -116,15 +116,15 @@ export class WherisAcquaviva extends Phaser.Scene {
                 answers: [
                     {type: "text", value:"Maiella"}, 
                     {type: "text", value:"Gran\nSasso"}, 
-                    {type: "text", value:"Monte\nConero"}, 
+                    {type: "text", value:"Conero"}, 
                     {type: "text", value:"Sibillini"},
-                    {type: "text", value:"Monti\nNebbiosi"},
-                    {type: "text", value:"Monte\nOlimpo"}
+                    {type: "text", value:"Nebbiosi"},
+                    {type: "text", value:"Olimpo"}
                 ], 
                 correct: 3 
             },
             {
-                question: "La vetta più alta dei sibillini?", 
+                question: "Come si chiama la vetta più alta dei Sibillini?", 
                 answers: [
                     {type: "text", value:"Sibilla"}, 
                     {type: "text", value:"Picco\ndel Sole"}, 
@@ -135,7 +135,7 @@ export class WherisAcquaviva extends Phaser.Scene {
                 correct: 2 
             },
             {
-                question: "La riserva naturale regionale più vicina come si chiama? ", 
+                question: "La Riserva Naturale Regionale più vicina come si chiama? ", 
                 answers: [
                     {type: "text", value:"Conero"}, 
                     {type: "text", value:"Fiastra"}, 

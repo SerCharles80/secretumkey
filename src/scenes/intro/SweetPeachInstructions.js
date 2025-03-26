@@ -20,11 +20,13 @@ export class SweetPeachInstructions extends Phaser.Scene {
         const titleText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1,
-            'Sweet Peach',
+            'PESCHETTA\n"Sweet Peach"',
             {
                 fontFamily: 'Arial',
-                fontSize: '38px',
-                color: '#000000'
+                fontSize: '36px',
+                color: '#000000',
+                align: 'center',
+            wordWrap: { width: this.cameras.main.width * 0.85, useAdvancedWrap: true }
             }
         ).setOrigin(0.5);
         

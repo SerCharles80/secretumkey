@@ -19,7 +19,7 @@ export class DecoPuzzleIntro extends Phaser.Scene {
         const titleText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1, // Posizionato al 10% dell'altezza
-            'De. Co. Puzzle',
+            'De. C.O. Puzzle',
             {
                 fontFamily: 'Poppins',
                 fontSize: '34px',

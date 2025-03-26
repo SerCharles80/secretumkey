@@ -16,7 +16,7 @@ export class Sciabolone extends Phaser.Scene {
         // Aggiungi l'array dei titoli di incoraggiamento
         this.levelTitles = [
             "Elimina i soldati francesi!",
-            "Sò che puoi farcela!",
+            "So che puoi farcela!",
             "Proprio cosi, continua!",
             "Sono veramente tanti.. forzaaa!",
             "Sbucano ovunque... Speriamo siano gli ultimi!!!"
@@ -60,7 +60,7 @@ export class Sciabolone extends Phaser.Scene {
         this.instructionText = this.add.text(
             this.cameras.main.centerX,
             textY,
-            "L'esercito francese è rintanato nella fortezza. Il coraggioso Giuseppe Costantini, detto Sciabolone, è l'unico che può sconfiggerli.\n Aiutalo ad eliminare tutti i soldati dalla rocca!",
+            "L'esercito francese è rintanato nella fortezza. Il coraggioso Giuseppe Costantini, detto Sciabolone, è l'unico capace di sconfiggerli.\n Aiutalo ad eliminarli.",
             {
                 fontFamily: 'Poppins',
                 fontSize: '18px',

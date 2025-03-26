@@ -27,7 +27,7 @@ export class Icomune extends Phaser.Scene {
                     {type: "image", value: "Famiglia Acquaviva"},
                     {type: "image", value: "Famiglia Brunforti"}, 
                     {type: "image", value: "Famiglia Neroni"},
-                    {type: "image", value: "Famiglia Infriccioli"}, 
+                    {type: "image", value: "Famiglia Savoia"}, 
                     {type: "image", value: "Famiglia Cancelli"},
                     {type: "image", value: "Famiglia Campanelli"}
                 ], 
@@ -41,7 +41,7 @@ export class Icomune extends Phaser.Scene {
                     {type: "image", value: "Cancelli Neroni"},
                     {type: "image", value: "Cancelli Sforza"}, 
                     {type: "image", value: "Brunforte Cancelli"},
-                    {type: "image", value: "Cancelli Spaccasassi"}
+                    {type: "image", value: "Cancelli Asburgo"}
                 ], 
                 correct: 2 
             },
@@ -122,7 +122,7 @@ export class Icomune extends Phaser.Scene {
                 correct: 1 
             },
             {
-                question: "Palazzo chiappini è accessibile per chi ha difficoltà motorie?", 
+                question: "Palazzo Chiappini è accessibile per chi ha difficoltà motorie?", 
                 answers: [
                     {type: "image", value: " "},
                     {type: "image", value: "  "}, 
@@ -204,13 +204,13 @@ export class Icomune extends Phaser.Scene {
         this.load.image('Cancelli Neroni', 'assets/icomune/03/cancelli-neroni.png');
         this.load.image('Cancelli Sforza', 'assets/icomune/03/cancelli-sforza.png');
         this.load.image('Brunforte Cancelli', 'assets/icomune/03/brunforte-cancelli.png');
-        this.load.image('Cancelli Spaccasassi', 'assets/icomune/03/cancelli-spaccasassi.png');
+        this.load.image('Cancelli Asburgo', 'assets/icomune/03/cancelli-spaccasassi.png');
 
         // Carico le famiglie per le risposte domanda 2
         this.load.image('Famiglia Acquaviva', 'assets/icomune/02/famiglia-acquaviva.png');
         this.load.image('Famiglia Brunforti', 'assets/icomune/02/famiglia-brunforti.png');
         this.load.image('Famiglia Neroni', 'assets/icomune/02/famiglia-neroni.png');
-        this.load.image('Famiglia Infriccioli', 'assets/icomune/02/famiglia-infriccioli.png');
+        this.load.image('Famiglia Savoia', 'assets/icomune/02/famiglia-infriccioli.png');
         this.load.image('Famiglia Cancelli', 'assets/icomune/02/famiglia-cancelli.png');
         this.load.image('Famiglia Campanelli', 'assets/icomune/02/famiglia-campanelli.png');
 

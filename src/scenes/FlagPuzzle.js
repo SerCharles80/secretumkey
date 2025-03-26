@@ -479,7 +479,7 @@ export class FlagPuzzle extends Phaser.Scene
             nextPhoto = 'pic2';
             size = 3;
             iterations = 6;
-            title = 'Bandiera Arancione per il Borgo Storico';
+            title = 'Bandiera Arancione del Touring Club d\'Italia';
         }
         else if (this.currentRound === 3) {
             nextPhoto = 'pic3';
@@ -554,7 +554,8 @@ export class FlagPuzzle extends Phaser.Scene
         const finalScore = Math.max(0, Math.ceil(baseScore - (timeElapsed / 1000)));
 
         // Passa solo punteggio e tempo alla scena finale
-        this.scene.start('FineFlagPuzzle', { 
+        //this.scene.start('FineFlagPuzzle', { 
+            this.scene.start('DecoPuzzle', {
             score: finalScore, 
             time: timeElapsed 
         });

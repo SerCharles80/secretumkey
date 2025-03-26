@@ -39,9 +39,9 @@ export class DecoPuzzle extends Phaser.Scene {
 		this.load.image('comuneAcqua', 'assets/decopuzzle/comune-acquaviva.png');
 		
 		// Carica le immagini per i round successivi
-		this.load.image('pic1', 'assets/decopuzzle/stemma-comune.png');
-		this.load.image('pic2', 'assets/decopuzzle/logo-de-co.png'); // Sostituisci con il percorso corretto
-		this.load.image('pic3', 'assets/decopuzzle/comune-acquaviva.png'); // Sostituisci con il percorso corretto
+		this.load.image('foto1', 'assets/decopuzzle/stemma-comune.png');
+		this.load.image('foto2', 'assets/decopuzzle/logo-de-co.png'); // Sostituisci con il percorso corretto
+		this.load.image('foto3', 'assets/decopuzzle/comune-acquaviva.png'); // Sostituisci con il percorso corretto
 	}
 
 	create () {
@@ -54,7 +54,7 @@ export class DecoPuzzle extends Phaser.Scene {
 		this.titleText = this.add.text(
 			this.cameras.main.centerX,
 			80,
-			'Stemma di Acquaviva',
+			'Stemma di Acquaviva Picena',
 			{
 				fontFamily: 'Poppins',
 				fontSize: '24px',
@@ -67,7 +67,7 @@ export class DecoPuzzle extends Phaser.Scene {
 		this.fullImage = this.add.image(
 			this.cameras.main.centerX,
 			this.cameras.main.centerY - 50,
-			 'stemma'
+			 'foto1'
 		).setOrigin(0.5);
 
 		this.startButton = createPrimaryButton(
@@ -78,7 +78,7 @@ export class DecoPuzzle extends Phaser.Scene {
 			() => {
 				this.fullImage.destroy();
 				// Avvia il puzzle con 'stemma'
-				this.startPuzzle('stemma', 3, 3);
+				this.startPuzzle('foto1', 3, 3);
 				this.startButton.destroy();
 				this.startTime = this.time.now;
 			}
@@ -300,15 +300,15 @@ export class DecoPuzzle extends Phaser.Scene {
 
 		let size, iterations, nextPhoto, title;
 		if (this.currentRound === 2) {
-			nextPhoto = 'pic2';
+			nextPhoto = 'foto2';
 			size = 3;
 			iterations = 6;
-			title = 'Bandiera Arancione per il Borgo Storico';
+			title = 'Logo De.C.O. Denominazione Comunale di Origine';
 		} else if (this.currentRound === 3) {
-			nextPhoto = 'pic3';
+			nextPhoto = 'foto3';
 			size = 3;
 			iterations = 6;
-			title = 'I riconoscimenti di Acquaviva Picena';
+			title = 'Comune di Acquaviva Picena';
 		}
 
 		if (this.titleText) {

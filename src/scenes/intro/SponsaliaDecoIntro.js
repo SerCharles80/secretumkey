@@ -19,10 +19,10 @@ export class SponsaliaDecoIntro extends Phaser.Scene {
         const titleText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.height * 0.1, // Posizionato al 10% dell'altezza
-            'Sponsalìa De.Co.',
+            'Sponsalia De.C.O.',
             {
                 fontFamily: 'Poppins',
-                fontSize: '34px',
+                fontSize: '32px',
                 color: '#000000',
                 wordWrap: { width: this.cameras.main.width * 0.8 }
             }
