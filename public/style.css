@@ -178,9 +178,9 @@ body{
 
 
 
-/* ! footer */
+/* ! footer 
 .f-footer{
-    /* position: fixed;  */
+    position: fixed; 
     display: none;
     bottom: 0; 
     background-color: var(--bianco); 
@@ -197,6 +197,8 @@ body{
 .f-footer__profilo{justify-content: end;}
 .f-footer img{width: 32px;}
 .f-footer__cartina img{width: 38px;}
+
+*/
 
 
 /* ! grid system */

@@ -58,7 +58,7 @@ export class FinePietaSegreta extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello', 
-            () => this.scene.start('FortezzaGostIntro')
+            () => this.scene.start('Ftotem')
         );
     }
 

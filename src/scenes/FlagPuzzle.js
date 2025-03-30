@@ -555,7 +555,7 @@ export class FlagPuzzle extends Phaser.Scene
 
         // Passa solo punteggio e tempo alla scena finale
         //this.scene.start('FineFlagPuzzle', { 
-            this.scene.start('DecoPuzzle', {
+            this.scene.start('FineFlagPuzzle', {
             score: finalScore, 
             time: timeElapsed 
         });

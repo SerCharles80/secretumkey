@@ -54,7 +54,7 @@ export class FineWerisAcquaviva extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('SweetPeachInstructions')
+            () => this.scene.start('BchiesaSanLorenzo'), // Cambia il nome della scena qui
         );
     }
 

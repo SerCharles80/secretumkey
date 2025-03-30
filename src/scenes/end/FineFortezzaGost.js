@@ -62,7 +62,7 @@ export class FineFortezzaGost extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
-            () => this.scene.start('SciaboloneIntro')
+            () => this.scene.start('Gfortezza')
         );
     }
 

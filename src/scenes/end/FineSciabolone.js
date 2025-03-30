@@ -62,7 +62,7 @@ export class FineSciabolone extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Vai alla Fortezza',
-            () => this.scene.start('BonusVinoMemoryIntro')
+            () => this.scene.start('')
         );
     }
 

@@ -29,53 +29,53 @@ export class WherisAcquaviva extends Phaser.Scene {
                 ], 
                 correct: 4 
             },
-            { 
-                question: "La nazione è l'Italia qual è la bandiera?", 
-                answers: [
-                    {type: "image", value: "irla"},
-                    {type: "image", value: "itali"}, 
-                    {type: "image", value: "avorio"},
-                    {type: "image", value: "messi"}, 
-                    {type: "image", value: "maroc"},
-                    {type: "image", value: "franc"}
-                ], 
-                correct: 1 
-            },
-            { 
-                question: "La regione si chiama Marche, qual è la bandiera?", 
-                answers: [
-                    {type: "image", value: "marc"},
-                    {type: "image", value: "abru"}, 
-                    {type: "image", value: "moli"},
-                    {type: "image", value: "laz"}, 
-                    {type: "image", value: "piem"},
-                    {type: "image", value: "tosc"}
-                ], 
-                correct: 0 
-            },
-            { 
-                question: "La provincia è quella di Ascoli piceno, qual'è lo stemma?", 
-                answers: [
-                    {type: "image", value: "mace"},
-                    {type: "image", value: "anc"}, 
-                    {type: "image", value: "scoli"},
-                    {type: "image", value: "pesa"}, 
-                    {type: "image", value: "peru"}
-                ], 
-                correct: 2 
-            },
-            { 
-                question: "E lo stemma del Comune?", 
-                answers: [
-                    {type: "image", value: "ter"},
-                    {type: "image", value: "acq"}, 
-                    {type: "image", value: "sem"},
-                    {type: "image", value: "fer"}, 
-                    {type: "image", value: "ben"},
-                    {type: "image", value: "ttam"},
-                ], 
-                correct: 1 
-            },
+            // { 
+            //     question: "La nazione è l'Italia qual è la bandiera?", 
+            //     answers: [
+            //         {type: "image", value: "irla"},
+            //         {type: "image", value: "itali"}, 
+            //         {type: "image", value: "avorio"},
+            //         {type: "image", value: "messi"}, 
+            //         {type: "image", value: "maroc"},
+            //         {type: "image", value: "franc"}
+            //     ], 
+            //     correct: 1 
+            // },
+            // { 
+            //     question: "La regione si chiama Marche, qual è la bandiera?", 
+            //     answers: [
+            //         {type: "image", value: "marc"},
+            //         {type: "image", value: "abru"}, 
+            //         {type: "image", value: "moli"},
+            //         {type: "image", value: "laz"}, 
+            //         {type: "image", value: "piem"},
+            //         {type: "image", value: "tosc"}
+            //     ], 
+            //     correct: 0 
+            // },
+            // { 
+            //     question: "La provincia è quella di Ascoli piceno, qual'è lo stemma?", 
+            //     answers: [
+            //         {type: "image", value: "mace"},
+            //         {type: "image", value: "anc"}, 
+            //         {type: "image", value: "scoli"},
+            //         {type: "image", value: "pesa"}, 
+            //         {type: "image", value: "peru"}
+            //     ], 
+            //     correct: 2 
+            // },
+            // { 
+            //     question: "E lo stemma del Comune?", 
+            //     answers: [
+            //         {type: "image", value: "ter"},
+            //         {type: "image", value: "acq"}, 
+            //         {type: "image", value: "sem"},
+            //         {type: "image", value: "fer"}, 
+            //         {type: "image", value: "ben"},
+            //         {type: "image", value: "ttam"},
+            //     ], 
+            //     correct: 1 
+            // },
             // {
             //     question: "Qual è la Diocesi di appartenenza", 
             //     answers: [
@@ -88,74 +88,74 @@ export class WherisAcquaviva extends Phaser.Scene {
             //     ], 
             //     correct: 1 
             // },
-            {
-                question: "Qual è il mumero unico per le emergenze?", 
-                answers: [
-                    {type: "text", value:"112"}, 
-                    {type: "text", value:"911"}, 
-                    {type: "text", value:"734"}, 
-                    {type: "text", value:"589"},
-                    {type: "text", value:"345"},
-                    {type: "text", value:"007"}
-                ], 
-                correct: 0 
-            },
-            {
-                question: "Il mare a est si chiama?", 
-                answers: [
-                    {type: "text", value:"Tirreno"}, 
-                    {type: "text", value:"Ionio"}, 
-                    {type: "text", value:"Laguna di Venezia"}, 
-                    {type: "text", value:"Adriatico"},
-                    {type: "text", value:"Laguna Dalmata"}
-                ], 
-                correct: 3 
-            },
-            {
-                question: "Le montagne a ovest si chiamano?", 
-                answers: [
-                    {type: "text", value:"Maiella"}, 
-                    {type: "text", value:"Gran\nSasso"}, 
-                    {type: "text", value:"Conero"}, 
-                    {type: "text", value:"Sibillini"},
-                    {type: "text", value:"Nebbiosi"},
-                    {type: "text", value:"Olimpo"}
-                ], 
-                correct: 3 
-            },
-            {
-                question: "Come si chiama la vetta più alta dei Sibillini?", 
-                answers: [
-                    {type: "text", value:"Sibilla"}, 
-                    {type: "text", value:"Picco\ndel Sole"}, 
-                    {type: "text", value:"Vettore"}, 
-                    {type: "text", value:"Gran\nSasso"},
-                    {type: "text", value:"Monte\nBove"}
-                ], 
-                correct: 2 
-            },
-            {
-                question: "La Riserva Naturale Regionale più vicina come si chiama? ", 
-                answers: [
-                    {type: "text", value:"Conero"}, 
-                    {type: "text", value:"Fiastra"}, 
-                    {type: "text", value:"Sibillini"}, 
-                    {type: "text", value:"Sentina"},
-                    {type: "text", value:"Colli\ndel Vino"},
-                    {type: "text", value:"Via\ndell'Olio"}
-                ], 
-                correct: 3 
-            },
-            {
-                question: "Acquaviva Picena confina con Ascoli Piceno?", 
-                answers: [
-                    {type: "text", value:"Si"}, 
-                    {type: "text", value:"No"}, 
-                    {type: "text", value:"Forse"},
-                    {type: "text", value:"A giorni\nAlterni"}
-                ], 
-                correct: 1 
-            }
+            // {
+            //     question: "Qual è il mumero unico per le emergenze?", 
+            //     answers: [
+            //         {type: "text", value:"112"}, 
+            //         {type: "text", value:"911"}, 
+            //         {type: "text", value:"734"}, 
+            //         {type: "text", value:"589"},
+            //         {type: "text", value:"345"},
+            //         {type: "text", value:"007"}
+            //     ], 
+            //     correct: 0 
+            // },
+            // {
+            //     question: "Il mare a est si chiama?", 
+            //     answers: [
+            //         {type: "text", value:"Tirreno"}, 
+            //         {type: "text", value:"Ionio"}, 
+            //         {type: "text", value:"Laguna di Venezia"}, 
+            //         {type: "text", value:"Adriatico"},
+            //         {type: "text", value:"Laguna Dalmata"}
+            //     ], 
+            //     correct: 3 
+            // },
+            // {
+            //     question: "Le montagne a ovest si chiamano?", 
+            //     answers: [
+            //         {type: "text", value:"Maiella"}, 
+            //         {type: "text", value:"Gran\nSasso"}, 
+            //         {type: "text", value:"Conero"}, 
+            //         {type: "text", value:"Sibillini"},
+            //         {type: "text", value:"Nebbiosi"},
+            //         {type: "text", value:"Olimpo"}
+            //     ], 
+            //     correct: 3 
+            // },
+            // {
+            //     question: "Come si chiama la vetta più alta dei Sibillini?", 
+            //     answers: [
+            //         {type: "text", value:"Sibilla"}, 
+            //         {type: "text", value:"Picco\ndel Sole"}, 
+            //         {type: "text", value:"Vettore"}, 
+            //         {type: "text", value:"Gran\nSasso"},
+            //         {type: "text", value:"Monte\nBove"}
+            //     ], 
+            //     correct: 2 
+            // },
+            // {
+            //     question: "La Riserva Naturale Regionale più vicina come si chiama? ", 
+            //     answers: [
+            //         {type: "text", value:"Conero"}, 
+            //         {type: "text", value:"Fiastra"}, 
+            //         {type: "text", value:"Sibillini"}, 
+            //         {type: "text", value:"Sentina"},
+            //         {type: "text", value:"Colli\ndel Vino"},
+            //         {type: "text", value:"Via\ndell'Olio"}
+            //     ], 
+            //     correct: 3 
+            // },
+            // {
+            //     question: "Acquaviva Picena confina con Ascoli Piceno?", 
+            //     answers: [
+            //         {type: "text", value:"Si"}, 
+            //         {type: "text", value:"No"}, 
+            //         {type: "text", value:"Forse"},
+            //         {type: "text", value:"A giorni\nAlterni"}
+            //     ], 
+            //     correct: 1 
+            // }
         ];
         this.currentQuestionIndex = 0;
         this.balloons = [];
