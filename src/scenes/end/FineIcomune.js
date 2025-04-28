@@ -62,7 +62,12 @@ export class FineIcomune extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
+
+            //versione con blocco
             () => this.scene.start('DchiesaSanRocco')
+
+            //versione senza blocco
+            // () => this.scene.start('DecoPuzzleIntro')
         );
     }
 

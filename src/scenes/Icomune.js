@@ -21,118 +21,116 @@ export class Icomune extends Phaser.Scene {
                 ], 
                 correct: 3 
             },
-            // { 
-            //     question: "Quale famiglia nobile ha deciso la costruzione del palazzo?", 
-            //     answers: [
-            //         {type: "image", value: "Famiglia Acquaviva"},
-            //         {type: "image", value: "Famiglia Brunforti"}, 
-            //         {type: "image", value: "Famiglia Neroni"},
-            //         {type: "image", value: "Famiglia Savoia"}, 
-            //         {type: "image", value: "Famiglia Cancelli"},
-            //         {type: "image", value: "Famiglia Campanelli"}
-            //     ], 
-            //     correct: 4 
-            // },
-            // { 
-            //     question: "Quale coppia di famiglie ha abitato il palazzo?", 
-            //     answers: [
-            //         {type: "image", value: "Cancelli Acquaviva"},
-            //         {type: "image", value: "Cancelli Cancelli"}, 
-            //         {type: "image", value: "Cancelli Neroni"},
-            //         {type: "image", value: "Cancelli Sforza"}, 
-            //         {type: "image", value: "Brunforte Cancelli"},
-            //         {type: "image", value: "Cancelli Asburgo"}
-            //     ], 
-            //     correct: 2 
-            // },
-            // { 
-            //     question: "Una delle stanze è affrescata con un ciclo pittorico dedicato a quale amore?", 
-            //     answers: [
-            //         {type: "image", value: "Agamennone e Elena"},
-            //         {type: "image", value: "Amore e Psiche"}, 
-            //         {type: "image", value: "Artù e Ginevra"},
-            //         {type: "image", value: "Ettore e Andromaca"}, 
-            //         {type: "image", value: "Giulietta e Romeo"},
-            //         {type: "image", value: "Tristano e Isotta"}
-            //     ], 
-            //     correct: 1 
-            // },
-            // { 
-            //     question: "Quale dea, moglie di Zeus/Giove, è rappresentata in un affresco che dà il nome alla sala?", 
-            //     answers: [
-            //         {type: "image", value: "Dea Teti"},
-            //         {type: "image", value: "Dea Hera"}, 
-            //         {type: "image", value: "Dea Demetra"},
-            //         {type: "image", value: "Dea Dafne"}, 
-            //         {type: "image", value: "Dea Atena"}
-            //     ], 
-            //     correct: 1 
-            // },
-            // { 
-            //     question: "Chi traina il suo carro?", 
-            //     answers: [
-            //         {type: "image", value: "Bovini"},
-            //         {type: "image", value: "Cavalli"}, 
-            //         {type: "image", value: "Cavallucci Marini"},
-            //         {type: "image", value: "Elefanti"}, 
-            //         {type: "image", value: "Pavoni"}
-            //     ], 
-            //     correct: 4 
-            // },
-            // { 
-            //     question: "Chi è la divinità greco-romana, figlia di Zeus/Giove, raffigurata nell'affresco al centro del soffitto di una delle sale?", 
-            //     answers: [
+            { 
+                question: "Quale famiglia nobile ha deciso la costruzione del palazzo?", 
+                answers: [
+                    {type: "image", value: "Famiglia Acquaviva"},
+                    {type: "image", value: "Famiglia Brunforti"}, 
+                    {type: "image", value: "Famiglia Neroni"},
+                    {type: "image", value: "Famiglia Savoia"}, 
+                    {type: "image", value: "Famiglia Cancelli"},
+                    {type: "image", value: "Famiglia Campanelli"}
+                ], 
+                correct: 4 
+            },
+            { 
+                question: "Quale coppia di famiglie ha abitato il palazzo?", 
+                answers: [
+                    {type: "image", value: "Cancelli Acquaviva"},
+                    {type: "image", value: "Cancelli Cancelli"}, 
+                    {type: "image", value: "Cancelli Neroni"},
+                    {type: "image", value: "Cancelli Sforza"}, 
+                    {type: "image", value: "Brunforte Cancelli"},
+                    {type: "image", value: "Cancelli Asburgo"}
+                ], 
+                correct: 2 
+            },
+            { 
+                question: "Una delle stanze è affrescata con un ciclo pittorico dedicato a quale amore?", 
+                answers: [
+                    {type: "image", value: "Agamennone e Elena"},
+                    {type: "image", value: "Amore e Psiche"}, 
+                    {type: "image", value: "Artù e Ginevra"},
+                    {type: "image", value: "Ettore e Andromaca"}, 
+                    {type: "image", value: "Giulietta e Romeo"},
+                    {type: "image", value: "Tristano e Isotta"}
+                ], 
+                correct: 1 
+            },
+            { 
+                question: "Quale dea, moglie di Zeus/Giove, è rappresentata in un affresco che dà il nome alla sala?", 
+                answers: [
+                    {type: "image", value: "Dea Teti"},
+                    {type: "image", value: "Dea Hera"}, 
+                    {type: "image", value: "Dea Demetra"},
+                    {type: "image", value: "Dea Dafne"}, 
+                    {type: "image", value: "Dea Atena"}
+                ], 
+                correct: 1 
+            },
+            { 
+                question: "Chi traina il suo carro?", 
+                answers: [
+                    {type: "image", value: "Bovini"},
+                    {type: "image", value: "Cavalli"}, 
+                    {type: "image", value: "Cavallucci Marini"},
+                    {type: "image", value: "Elefanti"}, 
+                    {type: "image", value: "Pavoni"}
+                ], 
+                correct: 4 
+            },
+            { 
+                question: "Chi è la divinità greco-romana, figlia di Zeus/Giove, raffigurata nell'affresco al centro del soffitto di una delle sale?", 
+                answers: [
             
-            //         {type: "image", value: "Atena"},
-            //         {type: "image", value: "Afrodite"}, 
-            //         {type: "image", value: "Dafne"},
-            //         {type: "image", value: "Demetra"}, 
-            //         {type: "image", value: "Teti"}
-            //     ], 
-            //     correct: 1 
-            // },
-            // { 
-            //     question: "Chi traina il suo carro?", 
-            //     answers: [
-            //         {type: "image", value: "Oche"},
-            //         {type: "image", value: "Cavalli"}, 
-            //         {type: "image", value: "Cavallucci Marini"},
-            //         {type: "image", value: "Elefanti"}, 
-            //         {type: "image", value: "Pavoni"}
-            //     ], 
-            //     correct: 0 
-            // },
-            // { 
-            //     question: "Una sala è dedicata alla Religione Cristiana a quale Testamento?", 
-            //     answers: [
-            //         {type: "image", value: "Vecchio Testamento"},
-            //         {type: "image", value: "Nuovo Testamento"},                   
-            //     ], 
-            //     correct: 0 
-            // },
-            // { 
-            //     question: "Una sala è affrescata con un genere artistico specifico. Quale?", 
-            //     answers: [
-            //         {type: "image", value: "Commedia"},
-            //         {type: "image", value: "Musica"}, 
-            //         {type: "image", value: "Poesia"},
-            //         {type: "image", value: "Tecnologia"}, 
-            //         {type: "image", value: "Tragedia"}
-            //     ], 
-            //     correct: 1 
-            // },
-            // {
-            //     question: "Palazzo Chiappini è accessibile per chi ha difficoltà motorie?", 
-            //     answers: [
-            //         {type: "image", value: " "},
-            //         {type: "image", value: "  "}, 
-            //         {type: "image", value: "   "},
-            //         {type: "image", value: "    "}                  
-            //     ], 
-            //     correct: 1 
-            // }
-
-
+                    {type: "image", value: "Atena"},
+                    {type: "image", value: "Afrodite"}, 
+                    {type: "image", value: "Dafne"},
+                    {type: "image", value: "Demetra"}, 
+                    {type: "image", value: "Teti"}
+                ], 
+                correct: 1 
+            },
+            { 
+                question: "Chi traina il suo carro?", 
+                answers: [
+                    {type: "image", value: "Oche"},
+                    {type: "image", value: "Cavalli"}, 
+                    {type: "image", value: "Cavallucci Marini"},
+                    {type: "image", value: "Elefanti"}, 
+                    {type: "image", value: "Pavoni"}
+                ], 
+                correct: 0 
+            },
+            { 
+                question: "Una sala è dedicata alla Religione Cristiana a quale Testamento?", 
+                answers: [
+                    {type: "image", value: "Vecchio Testamento"},
+                    {type: "image", value: "Nuovo Testamento"},                   
+                ], 
+                correct: 0 
+            },
+            { 
+                question: "Una sala è affrescata con un genere artistico specifico. Quale?", 
+                answers: [
+                    {type: "image", value: "Commedia"},
+                    {type: "image", value: "Musica"}, 
+                    {type: "image", value: "Poesia"},
+                    {type: "image", value: "Tecnologia"}, 
+                    {type: "image", value: "Tragedia"}
+                ], 
+                correct: 1 
+            },
+            {
+                question: "Palazzo Chiappini è accessibile per chi ha difficoltà motorie?", 
+                answers: [
+                    {type: "image", value: " "},
+                    {type: "image", value: "  "}, 
+                    {type: "image", value: "   "},
+                    {type: "image", value: "    "}                  
+                ], 
+                correct: 1 
+            }
         ];
         // Altre variabili (answerElements, balloons, ecc.)
         this.answerElements = [];

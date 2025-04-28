@@ -62,7 +62,12 @@ export class FineCamminami extends Phaser.Scene {
             this.cameras.main.centerX,
             timeText.y + 60,
             'Prossimo Livello',
+
+            //versione con blocco
             () => this.scene.start('EportaVecchia')
+
+            //versione senza blocco
+            // () => this.scene.start('SponsaliaDecoIntro')
         );
     }
 

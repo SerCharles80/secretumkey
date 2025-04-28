@@ -45,6 +45,7 @@ import { IbonusMuseo } from './scenes/checkpoint/IbonusMuseo';
 import { GrattaPajaIntro } from './scenes/intro/GrattaPajaIntro';
 import { GrattaPaja } from './scenes/GrattaPaja';
 import { FineGrattaPaja } from './scenes/end/FineGrattaPaja';
+import { FinaleSecretum } from './scenes/FinaleSecretum';
 
 window.onload = function () {
     const gameContainer = document.getElementById('contenitore-gioco-phaser');
@@ -61,68 +62,71 @@ window.onload = function () {
         parent: 'contenitore-gioco-phaser',
         backgroundColor: '#FFFBF5', // Imposta il colore di sfondo globale qui
         scene: [
-            // Ytestqr,
-            AchiesaSanNicolo,
-            WelcomeScreen, 
-            WherisAcquaviva,
-            FineWerisAcquaviva,
+
+
+            // AchiesaSanNicolo,
+                WelcomeScreen, 
+                WherisAcquaviva,
+                FineWerisAcquaviva,
             
-            // Ytestqr,
+
             BchiesaSanLorenzo,
-            SweetPeachInstructions,
-            SweetPeach,             
-            FineSweetPeach,
-            FlagPuzzleIntro,
-            FlagPuzzle,
-            FineFlagPuzzle,
+                SweetPeachInstructions,
+                SweetPeach,             
+                FineSweetPeach,
+                FlagPuzzleIntro,
+                FlagPuzzle,
+                FineFlagPuzzle,
 
-            // Ytestqr,
-            CpalazzoChiappini,
-            IcomuneIntro,
-            Icomune,
-            FineIcomune,
-
-            // Ytestqr,
-            DchiesaSanRocco,
-            DecoPuzzleIntro,
-            DecoPuzzle,
-            FineDecoPuzzle,
-            CamminamiIntro,
-            Camminami,
-            FineCamminami,
             
-            // Ytestqr,
+            CpalazzoChiappini,
+                IcomuneIntro,
+                Icomune,
+                FineIcomune,
+
+            
+            DchiesaSanRocco,
+                DecoPuzzleIntro,
+                DecoPuzzle,
+                FineDecoPuzzle,
+                CamminamiIntro,
+                Camminami,
+                FineCamminami,
+            
+            
             EportaVecchia,
-            SponsaliaDecoIntro,
-            SponsaliaDeco,
-            FineSponsaliaDeco,
-            PietaIntro,
-            PietaSegreta,
-            FinePietaSegreta,
+                SponsaliaDecoIntro,
+                SponsaliaDeco,
+                FineSponsaliaDeco,
+                PietaIntro,
+                PietaSegreta,
+                FinePietaSegreta,
 
-            // Ytestqr,
+            
             Ftotem,
-            FortezzaGostIntro,
-            FortezzaGost,
-            FineFortezzaGost,
+                FortezzaGostIntro,
+                FortezzaGost,
+                FineFortezzaGost,
 
-            // Ytestqr,
+            
             Gfortezza,
-            SciaboloneIntro,
-            Sciabolone,
-            FineSciabolone,
+                SciaboloneIntro,
+                Sciabolone,
+                FineSciabolone,
 
-            // Ytestqr,
+
             HbonusFortezza,
-            BonusVinoMemoryIntro,
-            BonusVinoMemory,
-            FineBonusVinoMemory,
+                BonusVinoMemoryIntro,
+                BonusVinoMemory,
+                FineBonusVinoMemory,
 
-            // Ytestqr,
+
             IbonusMuseo,
-            GrattaPajaIntro,
-            GrattaPaja,
-            FineGrattaPaja
+                GrattaPajaIntro,
+                GrattaPaja,
+                FineGrattaPaja,
+
+            FinaleSecretum
         ],
         audio: {
             noAudio: true  // Disabilita l'AudioContext

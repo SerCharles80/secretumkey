@@ -60,8 +60,13 @@ export class FineFlagPuzzle extends Phaser.Scene {
             this,
             this.cameras.main.centerX,
             timeText.y + 60,
-            'Prossimo Livello', 
+            'Prossimo Livello',
+            
+            //versione con blocco
             () => this.scene.start('CpalazzoChiappini')
+
+            //versione sbloccata
+            // () => this.scene.start('IcomuneIntro')
         );
     }
 

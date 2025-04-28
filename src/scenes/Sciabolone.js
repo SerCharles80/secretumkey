@@ -18,7 +18,6 @@ export class Sciabolone extends Phaser.Scene {
             "Elimina i soldati francesi!",
             "So che puoi farcela!",
             "Proprio cosi, continua!",
-            "Sono veramente tanti.. forzaaa!",
             "Sbucano ovunque... Speriamo siano gli ultimi!!!"
         ];
         this.levelTitleText = null;
@@ -120,7 +119,7 @@ export class Sciabolone extends Phaser.Scene {
 
         this.eliminatedCount = 0;
         this.soldiers = [];
-        const soldierCount = 2 * this.currentRound + 2;
+        const soldierCount = 2 * this.currentRound + 4;
         this.soldierCount = soldierCount;
 
         for (let i = 0; i < soldierCount; i++) {
@@ -225,7 +224,7 @@ export class Sciabolone extends Phaser.Scene {
         this.totalTime += this.time.now - this.roundStartTime;
         console.log(`Livello ${this.currentRound} completato. TotalTime: ${this.totalTime}ms`);
         // Se il livello corrente è minore di 5, passa al livello successivo, altrimenti termina il gioco
-        if (this.currentRound < 5) {
+        if (this.currentRound < 4) {
             this.currentRound++;
             console.log(`Avvio il livello ${this.currentRound}`);
             this.time.delayedCall(500, () => {

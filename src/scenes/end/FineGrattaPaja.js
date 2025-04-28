@@ -57,8 +57,8 @@ export class FineGrattaPaja extends Phaser.Scene {
             this,
             this.cameras.main.centerX,
             timeText.y + 60,
-            'Prossimo Livello', 
-            () => this.scene.start('FortezzaGostIntro')
+            'Prosegui', 
+            () => this.scene.start('FinaleSecretum')
         );
     }
 

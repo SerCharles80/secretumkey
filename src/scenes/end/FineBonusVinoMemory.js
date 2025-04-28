@@ -61,8 +61,10 @@ export class FineBonusVinoMemory extends Phaser.Scene {
             this,
             this.cameras.main.centerX,
             timeText.y + 60,
-            'Prossimo Livello',
-            () => this.scene.start('GrattaPaja')
+            'Prosegui',
+
+            //livello con blocco
+            () => this.scene.start('FinaleSecretum')
         );
     }
 
