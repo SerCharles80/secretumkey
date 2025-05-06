@@ -57,5 +57,9 @@ export class CamminamiIntro extends Phaser.Scene {
                 this.scene.start('Camminami'); // Avvia la scena del gioco Camminami
             }
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('camminamiIntro');
+        });
     }
 }

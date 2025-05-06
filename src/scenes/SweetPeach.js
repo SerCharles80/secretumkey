@@ -89,6 +89,26 @@ export class SweetPeach extends Phaser.Scene {
         
         // Aggiorna il punteggio (se gestito tramite GameState, il commento resta utile)
         this.updateScore();
+
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                'credenza',
+                'cesto',
+                'correctFeedback',
+                'wrongFeedback',
+                'pavimento',
+                '500g di farina',
+                '200g di zucchero',
+                '100g di burro',
+                '100ml di latte',
+                '80g di sale',
+                '100ml d\'olio',
+                '200ml di detersivo',
+                'tre uova',
+                'bustina di lievito'
+            ].forEach(key => this.textures.remove(key));
+        });
     }
         
 

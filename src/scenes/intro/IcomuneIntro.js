@@ -57,5 +57,11 @@ export class IcomuneIntro extends Phaser.Scene {
                 this.scene.start('Icomune'); // Avvia la scena del gioco Icomune
             }
         );
+
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('icomuneIntro');
+        });
+
     }
 }

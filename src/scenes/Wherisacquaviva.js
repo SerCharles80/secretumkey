@@ -227,22 +227,26 @@ export class WherisAcquaviva extends Phaser.Scene {
                 console.log("Pulsante Start premuto! Avvio gioco...");
                 this.startGame(); // Quando premuto, avvia il gioco
         });
-
-
-        // Aggiungi il testo del timer
-        /*this.timerText = this.add.text(10, 10, 'Time: 00:00', {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#000000'
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            // Rimuovi tutte le immagini caricate in preload
+            [
+                // Domanda 1
+                'austra','cinci','mauri','russi','europ','merica',
+                // Domanda 2
+                'irla','itali','avorio','messi','maroc','franc',
+                // Domanda 3
+                'marc','abru','moli','laz','piem','tosc',
+                // Domanda 4
+                'anc','scoli','mace','pesa','peru',
+                // Domanda 5
+                'acq','ter','sem','fer','ben','ttam',
+                // Risorse grafiche comuni
+                'balloon','balloon_popped','risposta_esatta','risposta_sbagliata'
+            ].forEach(key => this.textures.remove(key));
         });
-
-        // Aggiungi il testo del punteggio
-        this.scoreText = this.add.text(300, 10, 'Score: 0', {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#000000'
-        });*/
     }
+
+
 
     //Funzione per startare il gioco con il pulsante
     startGame() {

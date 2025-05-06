@@ -64,6 +64,10 @@ export class FineSponsaliaDeco extends Phaser.Scene {
             'Prossimo Livello',
             () => this.scene.start('PietaIntro')
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoSponsalia');
+        });
     }
 
     formatTime(milliseconds) {

@@ -251,7 +251,35 @@ export class Icomune extends Phaser.Scene {
                 }
             }
         );
-        // ...existing code (eventuali commenti)...
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                // Domanda 1
+                'Palazzo Acquaviva','Palazzo Brunforte','Palazzo Chigi','Palazzo Chiappini','Palazzo Campanelli',
+                // Domanda 2
+                'Famiglia Acquaviva','Famiglia Brunforti','Famiglia Neroni','Famiglia Savoia','Famiglia Cancelli','Famiglia Campanelli',
+                // Domanda 3
+                'Cancelli Acquaviva','Cancelli Cancelli','Cancelli Neroni','Cancelli Sforza','Brunforte Cancelli','Cancelli Asburgo',
+                // Domanda 4
+                'Agamennone e Elena','Amore e Psiche','Artù e Ginevra','Ettore e Andromaca','Giulietta e Romeo','Tristano e Isotta',
+                // Domanda 5
+                'Dea Teti','Dea Hera','Dea Demetra','Dea Dafne','Dea Atena',
+                // Domanda 6
+                'Bovini','Cavalli','Cavallucci Marini','Elefanti','Pavoni',
+                // Domanda 7
+                'Atena','Afrodite','Dafne','Demetra','Teti',
+                // Domanda 8
+                'Oche','Cavalli','Cavallucci Marini','Elefanti','Pavoni',
+                // Domanda 9
+                'Vecchio Testamento','Nuovo Testamento',
+                // Domanda 10
+                'Commedia','Musica','Poesia','Tecnologia','Tragedia',
+                // Domanda 11
+                ' ','  ','   ','    ',
+                // Risorse grafiche comuni
+                'delusione','risposta_esatta','esulto'
+            ].forEach(key => this.textures.remove(key));
+        });
     }
 
     startGame() {

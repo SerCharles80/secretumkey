@@ -68,6 +68,12 @@ export class FineFlagPuzzle extends Phaser.Scene {
             //versione sbloccata
             // () => this.scene.start('IcomuneIntro')
         );
+
+        
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoFlag');
+        });
     }
 
     formatTime(milliseconds) {

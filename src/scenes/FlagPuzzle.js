@@ -66,26 +66,25 @@ export class FlagPuzzle extends Phaser.Scene
         this.load.image('pic3', 'assets/flagpuzzle/verde-arancione.png');
     }
 
-    create ()
-    {
-        this.reveal = null; // O this.add.image(...).setAlpha(0); se vuoi un placeholder invisibile
-        window.solve = () => {
-            this.nextRound();
-        };
+    create (){
+            this.reveal = null; // O this.add.image(...).setAlpha(0); se vuoi un placeholder invisibile
+            window.solve = () => {
+                this.nextRound();
+            };
 
-        // Aggiungi il titolo per la prima immagine
-    this.titleText = this.add.text(
-        this.cameras.main.centerX,
-        80, // Posizione Y dall'alto
-        'Bandiera Verde dell\'Agricoltura',
-        {
-            fontFamily: 'Poppins',
-            fontSize: '24px',
-            color: '#000000',
-            align: 'center',
-            wordWrap: { width: this.cameras.main.width * 0.8 }
-        }
-    ).setOrigin(0.5);
+            // Aggiungi il titolo per la prima immagine
+            this.titleText = this.add.text(
+                this.cameras.main.centerX,
+                80, // Posizione Y dall'alto
+                'Bandiera Verde dell\'Agricoltura',
+                {
+                    fontFamily: 'Poppins',
+                    fontSize: '24px',
+                    color: '#000000',
+                    align: 'center',
+                    wordWrap: { width: this.cameras.main.width * 0.8 }
+                }
+        ).setOrigin(0.5);
 
         // Mostra l'immagine intera del puzzle
         this.fullImage = this.add.image(
@@ -112,6 +111,27 @@ export class FlagPuzzle extends Phaser.Scene
         // Aggiungi la deregistrazione di window.solve on shutdown:
         this.events.on('shutdown', () => {
             delete window.solve;
+        });
+
+        
+        // Libera la cache delle immagini e delle dynamic texture quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                'background',
+                'logo',
+                'box',
+                'box-inside',
+                'pic1',
+                'pic2',
+                'pic3'
+            ].forEach(key => this.textures.remove(key));
+
+            // Rimuovi tutte le dynamic texture dei pezzi del puzzle
+            let i = 0;
+            while (this.textures.exists(`slice${i}`)) {
+                this.textures.remove(`slice${i}`);
+                i++;
+            }
         });
     }
 

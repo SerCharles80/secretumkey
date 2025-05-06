@@ -76,6 +76,17 @@ export class Sciabolone extends Phaser.Scene {
             'Inizia',
             () => this.startGame()
         );
+
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                'roccaSciabolone',
+                'soldato',
+                'soldatoCut',
+                'sciabolaSinistra',
+                'sciabolaDestra'
+            ].forEach(key => this.textures.remove(key));
+        });
     }
 
     startGame() {

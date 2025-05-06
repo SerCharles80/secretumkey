@@ -102,6 +102,20 @@ export class SponsaliaDeco extends Phaser.Scene {
             'Inizia',
             () => this.startGame()
         );
+
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                'approval',
+                'error',
+                'sfondoIstruzioni',
+                'sfondoGioco',
+                'sponsaliaHeader',
+                // Tutti gli oggetti
+                'item1','item2','item3','item4','item5','item6','item7','item8',
+                'item9','item10','item11','item12','item13','item14','item15','item16'
+            ].forEach(key => this.textures.remove(key));
+        });
     }
 
     startGame() {

@@ -105,6 +105,11 @@ export class PietaSegreta extends Phaser.Scene {
             color: '#343434',
             fontWeight: 'bold'
         }).setVisible(false);
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('pieta');
+            this.textures.remove('gratta');
+        });
     }
 
 

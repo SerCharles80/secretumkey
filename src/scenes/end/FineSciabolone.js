@@ -64,6 +64,10 @@ export class FineSciabolone extends Phaser.Scene {
             'Vai alla Fortezza',
             () => this.scene.start('FinaleSecretum')
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoSciabolone');
+        });
     }
 
     formatTime(milliseconds) {

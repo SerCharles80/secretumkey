@@ -58,5 +58,9 @@ export class PietaIntro extends Phaser.Scene {
                 this.scene.start('PietaSegreta'); // Avvia la scena del gioco FlagPuzzle
             }
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('pietasegreta');
+        });
     }
 }

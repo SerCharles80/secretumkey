@@ -47,7 +47,7 @@ export class WelcomeScreen extends Phaser.Scene {
             this,
             this.cameras.main.centerX,
             this.cameras.main.centerY + (spiegazioneImage.displayHeight / 2) + 30,
-            'Avvia Secretum',
+            'Partenza!!',
             () => {
                 this.cameras.main.fadeOut(500, 255, 251, 245);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
@@ -55,5 +55,10 @@ export class WelcomeScreen extends Phaser.Scene {
                 });
             }
         );
+        // Rimuovi la texture solo quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('spiegazioneWheris');
+        });
+
     }
 }

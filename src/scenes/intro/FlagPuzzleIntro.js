@@ -57,5 +57,10 @@ export class FlagPuzzleIntro extends Phaser.Scene {
                 this.scene.start('FlagPuzzle'); // Avvia la scena del gioco FlagPuzzle
             }
         );
+
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('flagpuzleintro');
+        });
     }
 }

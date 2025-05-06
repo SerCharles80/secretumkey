@@ -87,6 +87,23 @@ export class Camminami extends Phaser.Scene {
         bg.displayHeight = this.cameras.main.height;
         // Mostra il pannello introduttivo
         this.showIntroPanel();
+
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            [
+                'frate',
+                'flag-start',
+                'flag-end',
+                'checkpoint',
+                'checkpoint1-img',
+                'checkpoint2-img',
+                'checkpoint3-img',
+                'checkpoint4-img',
+                'checkpoint5-img',
+                'checkpoint6-img',
+                'bg'
+            ].forEach(key => this.textures.remove(key));
+        });
     }
 
     showIntroPanel() {

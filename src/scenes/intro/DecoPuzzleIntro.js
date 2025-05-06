@@ -57,5 +57,9 @@ export class DecoPuzzleIntro extends Phaser.Scene {
                 this.scene.start('DecoPuzzle'); // Avvia la scena del gioco Decopuzzle
             }
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('introDeco');
+        });
     }
 }

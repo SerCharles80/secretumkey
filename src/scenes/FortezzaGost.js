@@ -64,6 +64,14 @@ export class FortezzaGost extends Phaser.Scene {
             'Inizia',
             () => this.startGame()
         );
+        // Libera la cache delle immagini quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('rocca');
+            this.textures.remove('ghost');
+            if (this.textures.exists('auraTexture')) {
+                this.textures.remove('auraTexture');
+            }
+        });
     }
 
     startGame() {

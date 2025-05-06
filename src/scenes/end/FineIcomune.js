@@ -69,6 +69,10 @@ export class FineIcomune extends Phaser.Scene {
             //versione senza blocco
             // () => this.scene.start('DecoPuzzleIntro')
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoIcomune');
+        });
     }
 
     formatTime(milliseconds) {

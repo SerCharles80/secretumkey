@@ -61,6 +61,9 @@ export class FineWerisAcquaviva extends Phaser.Scene {
             //senza blocco
             //() => this.scene.start('SweetPeachInstructions'), 
         );
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('saluto');
+        });
     }
 
     formatTime(milliseconds) {

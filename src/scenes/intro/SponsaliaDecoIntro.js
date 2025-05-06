@@ -57,5 +57,10 @@ export class SponsaliaDecoIntro extends Phaser.Scene {
                 this.scene.start('SponsaliaDeco'); // Avvia la scena del gioco SponsaliaDeco
             }
         );
+
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('forastieraIntro');
+        });
     }
 }

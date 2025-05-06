@@ -61,6 +61,10 @@ export class FineDecoPuzzle extends Phaser.Scene {
             'Prossimo Livello',
             () => this.scene.start('CamminamiIntro')
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoDeco');
+        });
     }
 
     formatTime(milliseconds) {

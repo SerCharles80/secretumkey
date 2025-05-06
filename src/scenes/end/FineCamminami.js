@@ -69,6 +69,10 @@ export class FineCamminami extends Phaser.Scene {
             //versione senza blocco
             // () => this.scene.start('SponsaliaDecoIntro')
         );
+        // Libera la cache dell'immagine quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('salutoCamminami');
+        });
     }
 
     formatTime(milliseconds) {

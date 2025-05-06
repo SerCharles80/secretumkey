@@ -83,6 +83,30 @@ export class DecoPuzzle extends Phaser.Scene {
 				this.startTime = this.time.now;
 			}
 		);
+		// Libera la cache delle immagini e delle dynamic texture quando la scena viene distrutta
+		this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+			[
+				'sfondo',
+				'logodeco',
+				'box-deco',
+				'box-inside-deco',
+				'stemma',
+				'logoDeco',
+				'comuneAcqua',
+				'foto1',
+				'foto2',
+				'foto3'
+			].forEach(key => this.textures.remove(key));
+
+			// Rimuovi tutte le dynamic texture dei pezzi del puzzle
+			if (this.slices) {
+				this.slices.forEach(slice => {
+					if (slice && slice.key) {
+						this.textures.remove(slice.key);
+					}
+				});
+			}
+		});
 	}
 
 	startPuzzle (key, rows, columns) {

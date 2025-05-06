@@ -55,5 +55,10 @@ export class SweetPeachInstructions extends Phaser.Scene {
                 this.scene.start('SweetPeach');
             }
         );
+        
+        //Libero la cache dall'immagine delle istruzioni quando la scena viene distrutta
+        this.events.once(Phaser.Scenes.Events.DESTROY, () => {
+            this.textures.remove('sweetInstructions');
+        });
     }
 }
